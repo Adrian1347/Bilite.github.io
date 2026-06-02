@@ -1,0 +1,1529 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>  
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Ngäbe-Buglé - Aprende con Ejercicios y Juegos</title>
+    <style>
+      * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+       }
+
+body {
+    font-family: system-ui, 'Segoe UI', 'Roboto', sans-serif;
+    background: radial-gradient(ellipse at 30% 40%, #0a2a1a, #051a0e);
+    min-height: 100vh;
+    position: relative;
+}
+
+body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(45deg, rgba(255,255,255,0.02) 0px, rgba(255,255,255,0.02) 2px, transparent 2px, transparent 8px);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.cover-cortina {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(8px);
+    background-color: rgba(0, 0, 0, 0.6);
+    transition: all 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+}
+
+.cover-cortina.hidden {/*oculta la pantalla y muestra el otro*/
+    display: none;
+}
+/*tarjeta*/
+.cover-tarjeta { 
+    background: linear-gradient(145deg, #1e2a1c, #0f1a0d);
+    border-radius: 48px;
+    max-width: 450px;
+    width: 90%;
+    padding: 40px 28px 48px;
+    text-align: center;
+    box-shadow: 0 0 20px rgba(76, 175, 80, 0.3), 0 0 40px rgba(76, 175, 80, 0.1), 0 25px 40px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(76, 175, 80, 0.5);
+    color: #e8f5e9;
+    backdrop-filter: blur(4px);
+}
+
+.cover-tarjeta h1 {
+    font-size: 2rem;
+    margin-bottom: 6px;
+    text-shadow: 0 0 10px #4caf50, 0 0 20px #2e7d32;
+}
+
+.cover-tarjeta p {
+    margin-bottom: 24px;
+    font-size: 0.95rem;
+    color: #a5d6a7;
+}
+
+.start-btn {
+    background: linear-gradient(135deg, #2e7d32, #1b5e20);
+    color: white;
+    border: none;
+    padding: 10px 24px;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 40px;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 0 10px rgba(46, 125, 50, 0.5);
+}
+
+.start-btn:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 20px rgba(76, 175, 80, 0.8), 0 0 30px rgba(76, 175, 80, 0.4);
+}
+/*registro(nombre,edad)*/
+.registro-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(12px);
+    justify-content: center;
+    align-items: center;
+    z-index: 3000;
+}
+
+.registro-modal.show {
+    display: flex;
+}
+
+.registro-content {
+    background: linear-gradient(145deg, #1e2a1c, #0f1a0d);
+    border-radius: 48px;
+    max-width: 380px;
+    width: 90%;
+    padding: 32px 28px 36px;
+    text-align: center;
+    box-shadow: 0 0 30px rgba(76, 175, 80, 0.4), 0 0 60px rgba(76, 175, 80, 0.15), 0 20px 40px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(76, 175, 80, 0.6);
+    animation: modalEntrada 0.4s cubic-bezier(0.34, 1.2, 0.64, 1);
+    position: relative;
+}
+
+.registro-content::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #4caf50, #ff9800, #4caf50);
+    border-radius: 50px;
+    z-index: -1;
+    opacity: 0.3;
+    filter: blur(8px);
+}
+
+@keyframes modalEntrada {
+    from { opacity: 0; transform: scale(0.9) translateY(20px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.registro-content h2 {
+    background: linear-gradient(135deg, #81c784, #ff9800);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    font-size: 26px;
+    margin-bottom: 8px;
+    font-weight: 800;
+    text-shadow: 0 0 20px rgba(129, 199, 132, 0.3);
+}
+
+.registro-content p {
+    color: #c8e6c9;
+    margin-bottom: 20px;
+    font-size: 12px;
+}
+
+.registro-grupo {
+    margin-bottom: 16px;
+    text-align: left;
+}
+
+.registro-grupo label {
+    display: block;
+    font-weight: bold;
+    color: #a5d6a7;
+    margin-bottom: 6px;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+}
+
+.registro-grupo input,
+.registro-grupo select {
+    width: 100%;
+    padding: 10px 14px;
+    border: 2px solid #2e7d32;
+    border-radius: 30px;
+    font-size: 14px;
+    outline: none;
+    background: rgba(10, 25, 12, 0.9);
+    color: #e8f5e9;
+    transition: all 0.3s;
+}
+
+.registro-grupo input:focus,
+.registro-grupo select:focus {
+    border-color: #ff9800;
+    box-shadow: 0 0 12px rgba(255, 152, 0, 0.5), 0 0 0 2px rgba(76, 175, 80, 0.2);
+}
+
+.pregunta-personalizada {
+    background: rgba(46, 125, 50, 0.2);
+    border-radius: 24px;
+    padding: 14px;
+    margin: 16px 0;
+    text-align: center;
+    border: 1px solid rgba(76, 175, 80, 0.3);
+}
+
+.pregunta-personalizada p {
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #ffb74d;
+    font-size: 13px;
+}
+
+.opciones-edad {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.opcion-edad {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 14px;
+    background: rgba(20, 40, 18, 0.8);
+    border-radius: 40px;
+    cursor: pointer;
+    transition: all 0.3s;
+    border: 1px solid #2e7d32;
+}
+
+.opcion-edad:hover {
+    border-color: #ff9800;
+    background: rgba(46, 125, 50, 0.4);
+    box-shadow: 0 0 10px rgba(255, 152, 0, 0.3);
+    transform: translateX(5px);
+}
+
+.opcion-edad input {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    accent-color: #ff9800;
+}
+
+.opcion-edad label {
+    flex: 1;
+    cursor: pointer;
+    margin: 0;
+    font-weight: normal;
+    font-size: 13px;
+    color: #c8e6c9;
+}
+
+.opcion-edad .emoji {
+    font-size: 18px;
+}
+
+.registro-buttons {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.registro-btn {
+    flex: 1;
+    background: linear-gradient(135deg, #2e7d32, #1b5e20);
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 40px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
+    transition: all 0.3s;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.registro-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px rgba(76, 175, 80, 0.6);
+    filter: brightness(1.1);
+}
+
+.registro-btn.cancelar {
+    background: linear-gradient(135deg, #5d4037, #3e2723);
+}
+
+.registro-btn.cancelar:hover {
+    box-shadow: 0 0 15px rgba(141, 110, 99, 0.6);
+}
+
+/*menu*/
+.menu-recipiente {
+    display: none;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.menu-recipiente.visible {
+    display: block;
+}
+
+.menu-encabezado {
+    background: rgba(30, 42, 28, 0.9);
+    backdrop-filter: blur(10px);
+    border-radius: 32px;
+    padding: 16px 24px;
+    margin-bottom: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    box-shadow: 0 0 20px rgba(76, 175, 80, 0.2), 0 4px 12px rgba(0,0,0,0.3);
+    border: 1px solid rgba(76, 175, 80, 0.4);
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.user-perfil {
+    width: 45px;
+    height: 45px;
+    background: linear-gradient(135deg, #2e7d32, #1b5e20);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    box-shadow: 0 0 12px rgba(76, 175, 80, 0.5);
+}
+
+.user-name {
+    font-weight: bold;
+    color: #81c784;
+    font-size: 18px;
+    text-shadow: 0 0 5px rgba(129, 199, 132, 0.3);
+}
+
+.user-edad {
+    font-size: 12px;
+    color: #ffb74d;
+    background: rgba(255, 152, 0, 0.15);
+    padding: 3px 12px;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 152, 0, 0.3);
+}
+
+.logo-cerrar {
+    background: linear-gradient(135deg, #c62828, #8e0000);
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 40px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 13px;
+    transition: all 0.3s;
+    box-shadow: 0 0 8px rgba(198, 40, 40, 0.3);
+}
+
+.logo-cerrar:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 16px rgba(198, 40, 40, 0.6);
+}
+
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.menu-option {
+    background: rgba(30, 42, 28, 0.85);
+    backdrop-filter: blur(8px);
+    border-radius: 32px;
+    padding: 28px 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+    border: 1px solid rgba(76, 175, 80, 0.3);
+}
+
+.menu-option:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 0 25px rgba(76, 175, 80, 0.4), 0 12px 24px rgba(0,0,0,0.3);
+    border-color: rgba(76, 175, 80, 0.8);
+}
+
+.menu-icono {
+    font-size: 48px;
+    margin-bottom: 12px;
+    filter: drop-shadow(0 0 6px rgba(76, 175, 80, 0.5));
+}
+
+.menu-option h3 {
+    color: #81c784;
+    margin-bottom: 8px;
+    font-size: 18px;
+}
+
+.menu-option p {
+    color: #a5d6a7;
+    font-size: 12px;
+}
+
+/*pantalla del quiz(main-app)*/
+.main-app {
+    display: none;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.main-app.visible {
+    display: block;
+}
+/*Preguntas*/
+.quiz-recipiente {
+    background: rgba(30, 42, 28, 0.9);
+    backdrop-filter: blur(10px);
+    border-radius: 40px;
+    max-width: 750px;
+    margin: 0 auto;
+    padding: 28px;
+    box-shadow: 0 0 30px rgba(76, 175, 80, 0.2), 0 20px 40px rgba(0,0,0,0.3);
+    border: 1px solid rgba(76, 175, 80, 0.4);
+}
+
+.quiz-encabezamiento {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid rgba(76, 175, 80, 0.3);
+    color: #c8e6c9;
+}
+
+.xp-experiencia {
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+    height: 8px;
+    width: 180px;
+    overflow: hidden;
+}
+
+.xp-termometro {
+    background: linear-gradient(90deg, #4caf50, #ff9800);
+    height: 100%;
+    width: 0%;
+    transition: width 0.3s;
+    box-shadow: 0 0 6px #4caf50;
+}
+
+/* IMAGEN DEL QUIZ MÁS PEQUEÑA */
+.question-image {
+    max-width: 80px;
+    max-height: 80px;
+    width: auto;
+    height: auto;
+    margin: 0 auto 12px auto;
+    display: block;
+    border-radius: 28px;
+    background: rgba(0,0,0,0.2);
+    padding: 6px;
+    object-fit: contain;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+.question-container {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.question-text {
+    font-size: 1.25rem;
+    text-align: center;
+    color: #e8f5e9;
+    text-shadow: 0 0 5px rgba(76, 175, 80, 0.3);
+    font-weight: 500;
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.option-btn {
+    background: rgba(20, 35, 18, 0.9);
+    border: 2px solid #2e7d32;
+    padding: 12px 18px;
+    border-radius: 40px;
+    cursor: pointer;
+    font-size: 0.95rem;
+    transition: all 0.2s;
+    text-align: left;
+    color: #e8f5e9;
+}
+
+.option-btn:hover:not(:disabled) {
+    background: rgba(46, 125, 50, 0.4);
+    border-color: #ff9800;
+    box-shadow: 0 0 12px rgba(255, 152, 0, 0.3);
+}
+
+.option-btn.correct {
+    background: #2e7d32;
+    color: white;
+    border-color: #81c784;
+    box-shadow: 0 0 15px #4caf50;
+}
+
+.option-btn.wrong {
+    background: #c62828;
+    color: white;
+    border-color: #ef5350;
+    box-shadow: 0 0 10px #c62828;
+}
+
+.escritura-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 20px 0;
+}
+
+.escritura-input {
+    padding: 12px 18px;
+    font-size: 1rem;
+    border: 2px solid #2e7d32;
+    border-radius: 40px;
+    outline: none;
+    text-align: center;
+    background: rgba(10, 25, 12, 0.9);
+    color: #e8f5e9;
+}
+
+.escritura-input:focus {
+    border-color: #ff9800;
+    box-shadow: 0 0 12px rgba(255, 152, 0, 0.5);
+}
+
+.escritura-btn {
+    background: linear-gradient(135deg, #2e7d32, #1b5e20);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 40px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 0.95rem;
+    transition: all 0.3s;
+}
+
+.escritura-btn:hover {
+    box-shadow: 0 0 15px #4caf50;
+}
+
+.comentario {
+    text-align: center;
+    padding: 12px;
+    border-radius: 24px;
+    margin: 12px 0;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.comentario.correct-comentario {
+    background: rgba(46, 125, 50, 0.3);
+    color: #81c784;
+    border: 1px solid #4caf50;
+    box-shadow: 0 0 10px rgba(76, 175, 80, 0.3);
+}
+
+.comentario.error-comentario {
+    background: rgba(198, 40, 40, 0.3);
+    color: #ef9a9a;
+    border: 1px solid #c62828;
+    box-shadow: 0 0 10px rgba(198, 40, 40, 0.3);
+}
+
+.quiz-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.quiz-btn {
+    background: linear-gradient(135deg, #2e7d32, #1b5e20);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 40px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 13px;
+    transition: all 0.3s;
+}
+
+.quiz-btn:hover:not(:disabled) {
+    box-shadow: 0 0 12px rgba(76, 175, 80, 0.6);
+    transform: translateY(-1px);
+}
+
+.quiz-btn:disabled {
+    background: #555;
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.reiniciar-btn {
+    background: linear-gradient(135deg, #ff9800, #e65100);
+}
+
+.back-menu-btn {
+    background: linear-gradient(135deg, #5d4037, #3e2723);
+}
+/*juego del ahorcado */
+.juego-app {
+    display: none;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.juego-app.visible {
+    display: block;
+}
+
+.juego-recipiente {
+    background: rgba(30, 42, 28, 0.9);
+    backdrop-filter: blur(10px);
+    border-radius: 40px;
+    max-width: 750px;
+    margin: 0 auto;
+    padding: 28px;
+    box-shadow: 0 0 30px rgba(76, 175, 80, 0.2), 0 20px 40px rgba(0,0,0,0.3);
+    border: 1px solid rgba(76, 175, 80, 0.4);
+}
+
+.juego-header h2 {
+    color: #81c784;
+    font-size: 24px;
+    margin-bottom: 12px;
+    text-shadow: 0 0 8px rgba(129, 199, 132, 0.3);
+}
+
+.juego-puntuacion {
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 20px;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.puntaje-item {
+    font-size: 14px;
+    font-weight: bold;
+    color: #a5d6a7;
+}
+
+.puntaje-item span {
+    color: #ff9800;
+    font-size: 20px;
+    text-shadow: 0 0 5px #ff9800;
+}
+
+.juego-palabra {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: #ffb74d;
+    margin-bottom: 20px;
+    letter-spacing: 8px;
+    text-shadow: 0 0 8px #ff9800;
+}
+
+.juego-opciones {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 8px;
+    margin: 20px 0;
+}
+
+.juego-opcion-btn {
+    background: linear-gradient(135deg, #2e7d32, #1b5e20);
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 12px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: bold;
+    transition: all 0.3s;
+    box-shadow: 0 0 5px rgba(76, 175, 80, 0.3);
+}
+
+.juego-opcion-btn:hover:not(:disabled) {
+    transform: scale(1.05);
+    box-shadow: 0 0 12px #4caf50;
+}
+
+.juego-opcion-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.juego-mensaje {
+    text-align: center;
+    padding: 10px;
+    border-radius: 20px;
+    margin: 12px 0;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+/*diccionario de palabras*/
+.pagina-palabras {
+    display: none;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.pagina-palabras.visible {
+    display: block;
+}
+
+.palabras-container {
+    background: rgba(30, 42, 28, 0.9);
+    backdrop-filter: blur(10px);
+    border-radius: 40px;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 28px;
+    box-shadow: 0 0 30px rgba(76, 175, 80, 0.2), 0 20px 40px rgba(0,0,0,0.3);
+    border: 1px solid rgba(76, 175, 80, 0.4);
+}
+
+.palabras-header {
+    background: linear-gradient(135deg, #2e7d32, #1b5e20);
+    padding: 20px 24px;
+    text-align: center;
+    border-radius: 32px 32px 0 0;
+    margin: -28px -28px 0 -28px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+.palabras-header h2 {
+    color: white;
+    margin: 0;
+    font-size: 24px;
+    text-shadow: 0 0 8px rgba(255,255,255,0.3);
+}
+
+.palabras-contador {
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 20px;
+    padding: 12px;
+    margin: 16px 0;
+    text-align: center;
+    color: #c8e6c9;
+}
+
+.contador-numero {
+    font-size: 32px;
+    font-weight: bold;
+    color: #ff9800;
+    display: block;
+    text-shadow: 0 0 8px #ff9800;
+}
+
+.buscador-container {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+}
+
+.buscador-input {
+    flex: 1;
+    padding: 10px 14px;
+    border: 2px solid #2e7d32;
+    border-radius: 40px;
+    font-size: 13px;
+    outline: none;
+    background: rgba(10, 25, 12, 0.9);
+    color: #e8f5e9;
+}
+
+.buscador-input:focus {
+    border-color: #ff9800;
+    box-shadow: 0 0 10px rgba(255, 152, 0, 0.3);
+}
+
+.filtro-btn {
+    background: rgba(30, 42, 28, 0.9);
+    border: 1px solid #2e7d32;
+    padding: 6px 14px;
+    border-radius: 40px;
+    cursor: pointer;
+    font-size: 12px;
+    color: #a5d6a7;
+    transition: all 0.2s;
+}
+
+.filtro-btn:hover {
+    border-color: #ff9800;
+    box-shadow: 0 0 8px rgba(255, 152, 0, 0.3);
+}
+
+.filtro-btn.activo {
+    background: #2e7d32;
+    color: white;
+    box-shadow: 0 0 10px #4caf50;
+}
+
+.palabras-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: 450px;
+    overflow-y: auto;
+}
+
+.palabra-item {
+    background: rgba(20, 35, 18, 0.8);
+    border-radius: 24px;
+    padding: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid #2e7d32;
+    transition: all 0.3s;
+    gap: 12px;
+}
+
+.palabra-item:hover {
+    transform: translateX(4px);
+    border-color: #ff9800;
+    box-shadow: 0 0 12px rgba(255, 152, 0, 0.2);
+}
+
+.palabra-item.aprendida {
+    background: rgba(46, 125, 50, 0.3);
+    border-color: #4caf50;
+}
+
+.palabra-imagen {
+    width: 50px;
+    height: 50px;
+    background: linear-gradient(135deg, #2e7d32, #1b5e20);
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    box-shadow: 0 0 8px rgba(76, 175, 80, 0.3);
+}
+
+.palabra-espanol {
+    font-weight: bold;
+    color: #81c784;
+    font-size: 16px;
+}
+
+.palabra-ngabere {
+    color: #ffb74d;
+    font-size: 14px;
+    margin-top: 2px;
+}
+
+.palabra-estado {
+    font-size: 11px;
+    padding: 3px 10px;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.palabra-estado.aprendida {
+    background: #2e7d32;
+    color: white;
+    box-shadow: 0 0 6px #4caf50;
+}
+
+.palabra-estado.pendiente {
+    background: #ff9800;
+    color: #1a1a1a;
+}
+
+.boton-aprender {
+    background: #2e7d32;
+    color: white;
+    border: none;
+    padding: 6px 16px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 12px;
+    transition: all 0.2s;
+}
+
+.boton-aprender:hover {
+    background: #4caf50;
+    box-shadow: 0 0 10px #4caf50;
+}
+
+.boton-cancelar {
+    background: #c62828;
+    color: white;
+    border: none;
+    padding: 6px 16px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 12px;
+    transition: all 0.2s;
+}
+
+.boton-cancelar:hover {
+    background: #ef5350;
+    box-shadow: 0 0 10px #c62828;
+}
+
+.palabra-accion {
+    text-align: right;
+    min-width: 100px;
+}
+
+.audio-btn {
+    background: none;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+    margin-left: 6px;
+    padding: 2px 6px;
+    border-radius: 20px;
+    color: #a5d6a7;
+    transition: all 0.2s;
+}
+
+.audio-btn:hover {
+    background: rgba(76, 175, 80, 0.3);
+    color: #ff9800;
+}
+
+.infor-tema {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(12px);
+    justify-content: center;
+    align-items: center;
+    z-index: 3000;
+}
+
+.infor-tema.show {
+    display: flex;
+}
+
+.tema-content {
+    background: linear-gradient(145deg, #1e2a1c, #0f1a0d);
+    border-radius: 48px;
+    max-width: 400px;
+    width: 90%;
+    padding: 28px;
+    text-align: center;
+    box-shadow: 0 0 30px rgba(76, 175, 80, 0.3), 0 20px 40px rgba(0,0,0,0.5);
+    border: 1px solid rgba(76, 175, 80, 0.5);
+    color: #e8f5e9;
+}
+
+.tema-content h3 {
+    color: #ff9800;
+    text-shadow: 0 0 8px rgba(255, 152, 0, 0.3);
+}
+      
+    </style>
+</head>
+<body>
+
+<div id="coverScreen" class="cover-cortina">
+    <div class="cover-tarjeta">
+        <h1>🌿 Blite Ngäbere</h1>
+        <p>Ngäbe-Buglé · La voz de nuestra tierra</p>
+        <button class="start-btn" id="loginStartBtn">▶ INICIAR</button>
+    </div>
+</div>
+
+<div id="registroModal" class="registro-modal">
+    <div class="registro-content">
+        <h2>✨ ¡Bienvenido! ✨</h2>
+        <p>Cuéntanos un poco sobre ti</p>
+        <div class="registro-grupo">
+            <label>📝 Nombre</label>
+            <input type="text" id="registroNombre" placeholder="Escriba su nombre ..." maxlength="30">
+        </div>
+        <div class="registro-grupo">
+            <label>🎂 Edad</label>
+            <input type="number" id="registroEdad" placeholder="Ejemplo: 15" min="1" max="120">
+        </div>
+        <div class="pregunta-personalizada">
+            <p>🌟 ¿Cómo te describes? 🌟</p>
+            <div class="opciones-edad" id="opcionesEdadContainer">
+                <div class="opcion-edad" data-valor="niño">
+                    <input type="radio" name="grupoEdad" id="opcionNino" value="niño">
+                    <label for="opcionNino">🧒 Niño/a (5 - 12 años)</label>
+                    <span class="emoji">🧸</span>
+                </div>
+                <div class="opcion-edad" data-valor="adolescente">
+                    <input type="radio" name="grupoEdad" id="opcionAdolescente" value="adolescente">
+                    <label for="opcionAdolescente">🎓 Adolescente (13 - 17 años)</label>
+                    <span class="emoji">📚</span>
+                </div>
+                <div class="opcion-edad" data-valor="adulto">
+                    <input type="radio" name="grupoEdad" id="opcionAdulto" value="adulto">
+                    <label for="opcionAdulto">💼 Adulto (18 - 50 años)</label>
+                    <span class="emoji">🌟</span>
+                </div>
+                <div class="opcion-edad" data-valor="otro">
+                    <input type="radio" name="grupoEdad" id="opcionOtro" value="otro">
+                    <label for="opcionOtro">🍃 Otros (Mayor de 50)</label>
+                    <span class="emoji">🍂</span>
+                </div>
+            </div>
+        </div>
+        <div class="registro-buttons">
+            <button class="registro-btn" id="confirmarRegistroBtn">✅ Comenzar</button>
+            <button class="registro-btn cancelar" id="cancelarRegistroBtn">❌ Salir</button>
+        </div>
+    </div>
+</div>
+
+<div id="menuScreen" class="menu-recipiente">
+    <div class="menu-encabezado">
+        <div class="user-info">
+            <div class="user-perfil" id="menuAvatar">👤</div>
+            <div>
+                <span class="user-name" id="menuUserName">Usuario</span>
+                <div class="user-edad" id="userEdadBadge"></div>
+            </div>
+        </div>
+        <button class="logo-cerrar" id="menuLogoutBtn">🚪 Cerrar sesión</button>
+    </div>
+    <div class="menu-grid">
+        <div class="menu-option" data-action="palabras">
+            <div class="menu-icono">📖</div>
+            <h3>📖 Palabras Traducidas</h3>
+            <p>Vocabulario Ngäbere - Español</p>
+            <div style="margin-top: 8px; font-size: 12px; color: #2e7d32;">📚 <span id="menuPalabrasCount">0</span> aprendidas</div>
+        </div>
+        <div class="menu-option" data-action="quiz" data-title="🌟 Lección Completa">
+            <div class="menu-icono">🎯</div>
+            <h3>📚 Lección de Estudio</h3>
+            <p>Familia, Números, Colores y más</p>
+        </div>
+        <div class="menu-option" data-action="juego">
+            <div class="menu-icono">🎮</div>
+            <h3>🎮 El Ahorcado</h3>
+            <p>Adivina la palabra en Ngäbere</p>
+            <div style="margin-top: 8px; font-size: 11px; color: #ff9800;">🏆 Gana XP</div>
+        </div>
+        <div class="menu-option" data-action="info" data-info="cultura">
+            <div class="menu-icono">🏮</div>
+            <h3>🎭 Cultura</h3>
+            <p>Tradiciones Ngäbe</p>
+        </div>
+        <div class="menu-option" data-action="info" data-info="comunidades">
+            <div class="menu-icono">🗺️</div>
+            <h3>📍 Comunidades</h3>
+            <p>Mapa y ubicación</p>
+        </div>
+        <div class="menu-option" data-action="info" data-info="curiosidades">
+            <div class="menu-icono">✨</div>
+            <h3>⭐ Datos</h3>
+            <p>Curiosidades del idioma</p>
+        </div>
+    </div>
+    <div style="text-align: center; margin-top: 30px;">
+        <button id="viewProgressBtn" style="background: #ff9800; color: white; border: none; padding: 10px 20px; border-radius: 40px; cursor: pointer; font-size: 13px;">📊 Ver mi progreso</button>
+    </div>
+</div>
+
+<div id="mainApp" class="main-app">
+    <div class="quiz-recipiente">
+        <div class="quiz-encabezamiento">
+            <div><strong id="userNameDisplay"></strong><div>🔥 Racha: <span id="streakCount">0</span></div></div>
+            <div><div>⭐ XP: <span id="xpCount">0</span></div><div class="xp-experiencia"><div class="xp-termometro" id="xpFill"></div></div></div>
+        </div>
+        <div id="courseTitle" style="text-align: center; color: #81c784; margin-bottom: 12px;">🌿 Aprende Ngäbere</div>
+        <div id="unitBadge" style="text-align: center; color: #a5d6a7; margin-bottom: 16px;">📚 0 lecciones</div>
+        <div class="question-container" id="questionContainer">
+            <img id="questionImage" class="question-image" style="display: none;" alt="Ilustración">
+            <div class="question-text" id="questionText">Cargando...</div>
+        </div>
+        <div id="optionsContainer" class="options"></div>
+        <div id="escrituraContainer" class="escritura-container" style="display: none;">
+            <input type="text" id="escrituraInput" class="escritura-input" placeholder="Escribe tu respuesta...">
+            <button id="escrituraBtn" class="escritura-btn">✅ Verificar</button>
+        </div>
+        <div class="comentario" id="feedbackArea"></div>
+        <div class="quiz-buttons">
+            <button class="quiz-btn back-menu-btn" id="backToMenuBtn">📋 Volver</button>
+            <button class="quiz-btn" id="nextBtn" disabled>Siguiente →</button>
+            <button class="quiz-btn reiniciar-btn" id="resetBtn">🔄 Reiniciar</button>
+        </div>
+    </div>
+</div>
+
+<div id="juegoApp" class="juego-app">
+    <div class="juego-recipiente">
+        <div class="juego-header">
+            <h2>🎮 ¡AHORCADO NGÄBERE! 🎮</h2>
+            <div class="juego-puntuacion">
+                <div class="puntaje-item">🎯 Puntaje: <span id="juegoPuntaje">0</span></div>
+                <div class="puntaje-item">❤️ Intentos: <span id="intentosRestantes">6</span></div>
+                <div class="puntaje-item">🏆 Racha: <span id="juegoRacha">0</span></div>
+            </div>
+        </div>
+        <div class="juego-pregunta-container">
+            <div class="juego-palabra" id="juegoPalabraOculta"></div>
+            <div id="juegoMensaje" class="juego-mensaje"></div>
+        </div>
+        <div class="juego-opciones" id="juegoLetrasContainer"></div>
+        <div class="juego-buttons">
+            <button class="quiz-btn back-menu-btn" id="volverMenuJuego">📋 Volver</button>
+            <button class="quiz-btn reiniciar-btn" id="reiniciarJuegoBtn">🔄 Nueva palabra</button>
+        </div>
+    </div>
+</div>
+
+<div id="palabrasPage" class="pagina-palabras">
+    <div class="palabras-container">
+        <div class="palabras-header"><h2>📖 Vocabulario Ngäbere - Español</h2></div>
+        <div class="palabras-contador"><span class="contador-numero" id="palabrasAprendidasCount">0</span><span>palabras aprendidas</span></div>
+        <div class="buscador-container">
+            <input type="text" id="buscadorPalabras" placeholder="🔍 Buscar..." class="buscador-input">
+            <button class="filtro-btn activo" data-filtro="todas" id="filtroTodas">Todas</button>
+            <button class="filtro-btn" data-filtro="aprendidas" id="filtroAprendidas">✅ Aprendidas</button>
+            <button class="filtro-btn" data-filtro="pendientes" id="filtroPendientes">📖 Pendientes</button>
+        </div>
+        <div class="palabras-lista" id="palabrasLista"></div>
+        <div style="display: flex; gap: 12px; margin-top: 20px;">
+            <button class="quiz-btn back-menu-btn" id="volverMenuPalabras" style="flex: 1;">← Volver</button>
+            <button class="quiz-btn" id="practicarPalabrasBtn" style="flex: 1;">📝 Practicar →</button>
+        </div>
+    </div>
+</div>
+
+<div id="infoModal" class="infor-tema">
+    <div class="tema-content">
+        <h3 id="modalTitle">Información</h3>
+        <p id="modalText"></p>
+        <button class="start-btn" id="closeModalBtn" style="margin-top: 12px;">Cerrar</button>
+    </div>
+</div>
+
+    <script>
+        // ===== DICCIONARIO COMPLETO ORDENADO ALFABÉTICAMENTE POR ESPAÑOL =====
+        const diccionarioNgäbere = [
+            { id: 4, espanol: "Abuela", ngabere: "Mole", aprendida: false, imagen: "👵",audio: "audio/abuela.mp3" },
+            { id: 3, espanol: "Abuelo", ngabere: "Ruai", aprendida: false, imagen: "👴",audio: "audio/abuelo.mp3" },
+            { id: 43, espanol: "Ahora", ngabere: "Nengwane", aprendida: false, imagen: "⏰",audio: "audio/ahora.mp3" },
+            { id: 13, espanol: "Amarillo", ngabere: "Sübrürero", aprendida: false, imagen: "🟡",audio: "audio/amarillo.mp3" },
+            { id: 50, espanol: "Ardilla", ngabere: "Köntän", aprendida: false, imagen: "🐿️",audio: "audio/ardilla.mp3" },
+            { id: 16, espanol: "Azul", ngabere: "Mrene", aprendida: false, imagen: "🔵",audio: "audio/azul.mp3" },
+            { id: 29, espanol: "Boca", ngabere: "Kata", aprendida: false, imagen: "👄" },
+            { id: 34, espanol: "Cabeza", ngabere: "Duo", aprendida: false, imagen: "🗣️" },
+            { id: 60, espanol: "Caballo", ngabere: "Mätä", aprendida: false, imagen: "🐎" },
+            { id: 47, espanol: "Camaron", ngabere: "kebe", aprendida: false, imagen: "🦐" },
+            { id: 46, espanol: "Cangrejo", ngabere: "Mesele ", aprendida: false, imagen: "🦀" },
+            { id: 59, espanol: "Cerdo", ngabere: "mutdu", aprendida: false, imagen: "🐷" },
+            { id: 52, espanol: "Cocodrilo", ngabere: "gwa", aprendida: false, imagen: "🐊" },
+            { id: 33, espanol: "Corazón", ngabere: "Brúgwa", aprendida: false, imagen: "❤️" },
+            { id: 20, espanol: "Cuatro", ngabere: "Kobkä", aprendida: false, imagen: "4️⃣" },
+            { id: 26, espanol: "Diez", ngabere: "KwäJätä", aprendida: false, imagen: "🔟" },
+            { id: 44, espanol: "Dios", ngabere: "Ngöbö", aprendida: false, imagen: "🙏" },
+            { id: 41, espanol: "Domingo", ngabere: "Ka köböi", aprendida: false, imagen: "📅" },
+            { id: 18, espanol: "Dos", ngabere: "Kübu", aprendida: false, imagen: "2️⃣" },
+            { id: 63, espanol: "Gallina", ngabere: "kwi", aprendida: false, imagen: "🐔" },
+            { id: 62, espanol: "Gato", ngabere: "minchi", aprendida: false, imagen: "🐱" },
+            { id: 5, espanol: "Hermano", ngabere: "Etdaba", aprendida: false, imagen: "👨‍🦰" },
+            { id: 6, espanol: "Hermana", ngabere: "Nguai", aprendida: false, imagen: "👩‍🦰" },
+            { id: 7, espanol: "Hijo", ngabere: "Ngobo", aprendida: false, imagen: "👦" },
+            { id: 8, espanol: "Hija", ngabere: "Ngönkö", aprendida: false, imagen: "👧" },
+            { id: 51, espanol: "Iguana", ngabere: "rö", aprendida: false, imagen: "🦎" },
+            { id: 55, espanol: "Jabali", ngabere: "tiro", aprendida: false, imagen: "🐗" },
+            { id: 39, espanol: "Jueves", ngabere: "Mede köböi", aprendida: false, imagen: "📅" },
+            { id: 35, espanol: "Lunes", ngabere: "Ñö köböi", aprendida: false, imagen: "📅" },
+            { id: 2, espanol: "Mamá", ngabere: "Meye", aprendida: false, imagen: "👩" },
+            { id: 31, espanol: "Mano", ngabere: "Kise", aprendida: false, imagen: "🖐️" },
+            { id: 36, espanol: "Martes", ngabere: "Muke köböi", aprendida: false, imagen: "📅" },
+            { id: 37, espanol: "Miércoles", ngabere: "Kri köböi", aprendida: false, imagen: "📅" },
+            { id: 30, espanol: "Nariz", ngabere: "Inson", aprendida: false, imagen: "👃" },
+            { id: 15, espanol: "Negro", ngabere: "Drüne", aprendida: false, imagen: "⚫" },
+            { id: 25, espanol: "Nueve", ngabere: "Kwäokän", aprendida: false, imagen: "9️⃣" },
+            { id: 24, espanol: "Ocho", ngabere: "Kwäkwä", aprendida: false, imagen: "8️⃣" },
+            { id: 28, espanol: "Ojos", ngabere: "Ukwa", aprendida: false, imagen: "👀" },
+            { id: 27, espanol: "Oreja", ngabere: "Olo", aprendida: false, imagen: "👂" },
+            { id: 53, espanol: "Paloma", ngabere: "ütdo", aprendida: false, imagen: "🕊️" },
+            { id: 1, espanol: "Papá", ngabere: "Rün", aprendida: false, imagen: "👨" },
+            { id: 49, espanol: "Perico", ngabere: "Ore", aprendida: false, imagen: "🐦" },
+            { id: 61, espanol: "Perro", ngabere: "nugro", aprendida: false, imagen: "🐕" },
+            { id: 48, espanol: "Pez", ngabere: "Gwa", aprendida: false, imagen: "🐟" },
+            { id: 32, espanol: "Pie", ngabere: "Ngatdo", aprendida: false, imagen: "🦶" },
+            { id: 11, espanol: "Rojo", ngabere: "Tain", aprendida: false, imagen: "🔴" },
+            { id: 40, espanol: "Sábado", ngabere: "Ngöböi", aprendida: false, imagen: "📅" },
+            { id: 22, espanol: "Seis", ngabere: "Kwäti", aprendida: false, imagen: "6️⃣" },
+            { id: 23, espanol: "Siete", ngabere: "Kwäkükü", aprendida: false, imagen: "7️⃣" },
+            { id: 45, espanol: "Te amo", ngabere: "Mä tare ti gwe", aprendida: false, imagen: "💕" },
+            { id: 9, espanol: "Tío", ngabere: "Gru", aprendida: false, imagen: "🧔" },
+            { id: 10, espanol: "Tía", ngabere: "Meyi", aprendida: false, imagen: "👩" },
+            { id: 56, espanol: "Tigre", ngabere: "Gwära", aprendida: false, imagen: " 🐯" },
+            { id: 19, espanol: "Tres", ngabere: "Komä", aprendida: false, imagen: "3️⃣" },
+            { id: 17, espanol: "Uno", ngabere: "Kwati", aprendida: false, imagen: "1️⃣" },
+            { id: 58, espanol: "Vaca", ngabere: "nibi", aprendida: false, imagen: "🐂" },
+            { id: 57, espanol: "Venado", ngabere: "Büra", aprendida: false, imagen: "🦌" },
+            { id: 12, espanol: "Verde", ngabere: "Rerebare", aprendida: false, imagen: "🟢" },
+            { id: 38, espanol: "Viernes", ngabere: "Ni köböi", aprendida: false, imagen: "📅" },
+            { id: 42, espanol: "Bueno/Bien", ngabere: "Kwin", aprendida: false, imagen: "👍" },
+            { id: 54, espanol: "Zarigüeya", ngabere: "Kotä", aprendida: false, imagen: "🦦" }
+        ];
+
+        const palabrasJuego = [
+            { espanol: "Papá", ngabere: "Rün", pista: "Padre" },
+            { espanol: "Mamá", ngabere: "Meye", pista: "Madre" },
+            { espanol: "Abuelo", ngabere: "Ruai", pista: "Padre del padre" },
+            { espanol: "Abuela", ngabere: "Mole", pista: "Madre de la madre" },
+            { espanol: "Hermano", ngabere: "Etdaba", pista: "Familiar varón" },
+            { espanol: "Rojo", ngabere: "Tain", pista: "Color de la pasión" },
+            { espanol: "Verde", ngabere: "Rerebare", pista: "Color de la naturaleza" },
+            { espanol: "Uno", ngabere: "Kwati", pista: "Número singular" },
+            { espanol: "Corazón", ngabere: "Brukwä", pista: "Órgano del amor" }
+        ];
+
+        const todasLasPreguntas = [
+            { tipo: "escoger", text: "¿Cómo se dice 'Papá' en Ngäbere?", correcta: "Rün", opciones: ["Meye", "Rün", "Ruai", "Mole"], imagen: "Gemini_Generated_Image_z68sa4z68sa4z68s.png" },
+            { tipo: "escoger", text: "¿Qué significa 'Meye' en español?", correcta: "Mamá", opciones: ["Papá", "Mamá", "Abuelo", "Hermano"], imagen: "Gemini_Generated_Image_56mafj56mafj56ma.png" },
+            { tipo: "escoger", text: "¿Cómo se dice 'Rojo' en Ngäbere?", correcta: "Tain", opciones: ["Rerebare", "Tain", "Mrene", "Sübrürero"], imagen: "Gemini_Generated_Image_h4fatdh4fatdh4fa.png" },
+            { type: "escoger", text: "¿Cómo se dice 'Uno' en Ngäbere?", correcta: "Kwati", opciones: ["Kübu", "Komä", "Kwati", "Kobkä"], imagen: "Gemini_Generated_Image_k3h4l3k3h4l3k3h4.png" },
+            { tipo: "escoger", text: "¿Cómo se dice 'Oreja' en Ngäbere?", correcta: "Olo", opciones: ["Ukwa", "Olo", "Kata", "Inson"], imagen: "Gemini_Generated_Image_1y0xn91y0xn91y0x.png" },
+            { tipo: "escribir", text: "Escribe 'Te amo' en Ngäbere.", correcta: "Mä tare ti gwe", opciones: [], imagen: "Gemini_Generated_Image_8t6eda8t6eda8t6e.png" },
+            { tipo: "escribir", text: "¿Cómo se dice 'Dios' en Ngäbere?", correcta: "Ngöbö", opciones: [], imagen: "Gemini_Generated_Image_7tlpld7tlpld7tlp.png"},
+        ];
+        
+        function revolverPreguntas(preguntas) {
+            for (let i = preguntas.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [preguntas[i], preguntas[j]] = [preguntas[j], preguntas[i]];
+            }
+            return preguntas;
+        }
+
+        let currentUser = '', userEdad = 0, userGrupo = '', currentQuestions = [], currentIndex = 0;
+        let userXP = 0, streak = 0, answered = false, canAnswer = true, currentLessonTitle = '';
+        let palabrasAprendidas = [];
+        let juegoPuntaje = 0, juegoRacha = 0, palabraActual = null, palabraOculta = [], letrasAdivinadas = [], intentosRestantes = 6, juegoActivo = true;
+        let filtroActual = 'todas';
+
+        const coverScreen = document.getElementById('coverScreen'), 
+            registroModal = document.getElementById('registroModal'), 
+            menuScreen = document.getElementById('menuScreen'),
+            mainApp = document.getElementById('mainApp'), 
+            juegoApp = document.getElementById('juegoApp'),
+            palabrasPage = document.getElementById('palabrasPage');
+
+        const loginStartBtn = document.getElementById('loginStartBtn'),
+            confirmarRegistroBtn = document.getElementById('confirmarRegistroBtn'),
+            cancelarRegistroBtn = document.getElementById('cancelarRegistroBtn'), 
+            registroNombre = document.getElementById('registroNombre'), 
+            registroEdad = document.getElementById('registroEdad'),
+            menuLogoutBtn = document.getElementById('menuLogoutBtn'), 
+            backToMenuBtn = document.getElementById('backToMenuBtn'),
+            menuUserName = document.getElementById('menuUserName'), 
+            menuAvatar = document.getElementById('menuAvatar'),
+            userEdadBadge = document.getElementById('userEdadBadge'),
+            userNameDisplay = document.getElementById('userNameDisplay');
+
+        const nextBtn = document.getElementById('nextBtn'), 
+            resetBtn = document.getElementById('resetBtn'), 
+            feedbackArea = document.getElementById('feedbackArea'),
+            questionText = document.getElementById('questionText'),
+            questionImage = document.getElementById('questionImage'),
+            optionsContainer = document.getElementById('optionsContainer'),
+            escrituraContainer = document.getElementById('escrituraContainer'), 
+            escrituraInput = document.getElementById('escrituraInput'), 
+            escrituraBtn = document.getElementById('escrituraBtn'), 
+            streakCount = document.getElementById('streakCount'), 
+            xpCount = document.getElementById('xpCount'), 
+            xpFill = document.getElementById('xpFill'), 
+            courseTitle = document.getElementById('courseTitle'), 
+            unitBadge = document.getElementById('unitBadge');
+
+        const juegoPuntajeSpan = document.getElementById('juegoPuntaje'), 
+            intentosRestantesSpan = document.getElementById('intentosRestantes'), 
+            juegoRachaSpan = document.getElementById('juegoRacha'), 
+            juegoPalabraOculta = document.getElementById('juegoPalabraOculta'), 
+            juegoMensaje = document.getElementById('juegoMensaje'), 
+            juegoLetrasContainer = document.getElementById('juegoLetrasContainer'), 
+            reiniciarJuegoBtn = document.getElementById('reiniciarJuegoBtn'), 
+            volverMenuJuego = document.getElementById('volverMenuJuego');
+
+        const infoModal = document.getElementById('infoModal'), 
+            modalTitle = document.getElementById('modalTitle'), 
+            modalText = document.getElementById('modalText'), 
+            closeModalBtn = document.getElementById('closeModalBtn');
+
+        const infoData = {
+            cultura: { title: "🎭 Cultura Ngäbe", text: "Los Ngäbe conservan tradiciones como el 'balsería', tejidos de chaquira y medicina natural." },
+            comunidades: { title: "📍 Comunidades", text: "La comarca Ngäbe-Buglé se extiende por Bocas del Toro, Chiriquí, Veraguas." },
+            curiosidades: { title: "✨ Datos curiosos", text: "El Ngäbere es una lengua tonal con más de 200,000 hablantes." }
+        };
+
+        function guardarPerfilUsuario() { localStorage.setItem(`perfil_${currentUser}`, JSON.stringify({ nombre: currentUser, edad: userEdad, grupo: userGrupo, xp: userXP, streak: streak, juegoPuntaje: juegoPuntaje })); }
+        function cargarPerfilUsuario() { const p = localStorage.getItem(`perfil_${currentUser}`); if (p) { const perfil = JSON.parse(p); userXP = perfil.xp || 0; streak = perfil.streak || 0; juegoPuntaje = perfil.juegoPuntaje || 0; updateXpAndStreak(); } }
+        function guardarPalabrasUsuario() { localStorage.setItem(`palabras_${currentUser}_${userEdad}`, JSON.stringify(palabrasAprendidas)); actualizarContadorPalabras(); }
+        function cargarPalabrasUsuario() { const g = localStorage.getItem(`palabras_${currentUser}_${userEdad}`); if (g) { palabrasAprendidas = JSON.parse(g); diccionarioNgäbere.forEach(p => p.aprendida = palabrasAprendidas.includes(p.id)); } actualizarContadorPalabras(); }
+        function actualizarContadorPalabras() { const a = diccionarioNgäbere.filter(p => p.aprendida).length; document.getElementById('menuPalabrasCount') && (document.getElementById('menuPalabrasCount').textContent = a); document.getElementById('palabrasAprendidasCount') && (document.getElementById('palabrasAprendidasCount').textContent = a); }
+        function updateXpAndStreak() { xpCount && (xpCount.innerText = userXP); streakCount && (streakCount.innerText = streak); xpFill && (xpFill.style.width = `${userXP % 100}%`); actualizarContadorPalabras(); }
+        
+        function usarTTS(texto) {
+            if (!texto) return;
+            window.speechSynthesis.cancel();
+            const speech = new SpeechSynthesisUtterance(texto);
+            speech.lang = 'es-ES';
+            speech.rate = 1.0;
+            window.speechSynthesis.speak(speech);
+        }
+        
+        function showModal(title, text) { modalTitle.innerText = title; modalText.innerText = text; infoModal.classList.add('show'); }
+        function closeModal() { infoModal.classList.remove('show'); }
+
+        function iniciarJuego() {
+            if (!currentUser) { showModal('⚠️ Sin sesión', 'Inicia sesión primero.'); return; }
+            menuScreen.classList.remove('visible'); menuScreen.style.display = 'none';
+            mainApp.classList.remove('visible'); mainApp.style.display = 'none';
+            palabrasPage.classList.remove('visible'); palabrasPage.style.display = 'none';
+            juegoApp.style.display = 'block'; juegoApp.classList.add('visible');
+            nuevaPalabraJuego();
+        }
+        function nuevaPalabraJuego() {
+            const indice = Math.floor(Math.random() * palabrasJuego.length);
+            palabraActual = { ...palabrasJuego[indice] };
+            palabraOculta = []; letrasAdivinadas = []; intentosRestantes = 6; juegoActivo = true;
+            for (let i = 0; i < palabraActual.ngabere.length; i++) palabraOculta.push('_');
+            actualizarInterfazJuego(); generarTecladoJuego();
+        }
+        function actualizarInterfazJuego() {
+            juegoPalabraOculta.innerHTML = palabraOculta.join(' ').toUpperCase();
+            intentosRestantesSpan.innerHTML = intentosRestantes;
+            juegoPuntajeSpan.innerHTML = juegoPuntaje;
+            juegoRachaSpan.innerHTML = juegoRacha;
+            juegoMensaje.innerHTML = `💡 Pista: ${palabraActual.pista}`;
+            juegoMensaje.style.background = "#e3f2fd";
+        }
+        function generarTecladoJuego() {
+            const letras = 'ABCDEFGHIJKLMNOPQRSTUVWXYZÑÖÜÄ'.split('');
+            juegoLetrasContainer.innerHTML = '';
+            letras.forEach(letra => {
+                const btn = document.createElement('button');
+                btn.className = 'juego-opcion-btn';
+                btn.textContent = letra;
+                btn.disabled = !juegoActivo || letrasAdivinadas.includes(letra.toLowerCase());
+                btn.onclick = () => adivinarLetra(letra);
+                juegoLetrasContainer.appendChild(btn);
+            });
+        }
+        function adivinarLetra(letra) {
+            if (!juegoActivo) return;
+            const letraLower = letra.toLowerCase();
+            if (letrasAdivinadas.includes(letraLower)) { juegoMensaje.innerHTML = `⚠️ Ya intentaste "${letra}"`; return; }
+            letrasAdivinadas.push(letraLower);
+            let acierto = false;
+            for (let i = 0; i < palabraActual.ngabere.length; i++) {
+                if (palabraActual.ngabere[i].toLowerCase() === letraLower) { palabraOculta[i] = palabraActual.ngabere[i]; acierto = true; }
+            }
+            if (acierto) {
+                juegoMensaje.innerHTML = `🎉 ¡Bien! "${letra}" está en la palabra.`;
+                juegoMensaje.style.background = "#c8e6c9";
+                if (!palabraOculta.includes('_')) {
+                    const xpGanado = 20 + juegoRacha * 2;
+                    userXP += xpGanado; juegoPuntaje += 10; juegoRacha++;
+                    updateXpAndStreak(); guardarPerfilUsuario(); juegoActivo = false;
+                    juegoMensaje.innerHTML = `🎉¡FELICIDADES! "${palabraActual.ngabere}" = "${palabraActual.espanol}" 🎉<br>+${xpGanado} XP`;
+                    generarTecladoJuego();
+                    setTimeout(() => nuevaPalabraJuego(), 2500);
+                }
+            } else {
+                intentosRestantes--;
+                juegoMensaje.innerHTML = `❌ "${letra}" no está. Te quedan ${intentosRestantes} intentos.`;
+                juegoMensaje.style.background = "#ffcdd2";
+                if (intentosRestantes <= 0) { juegoRacha = 0; juegoActivo = false; juegoMensaje.innerHTML = `💀 GAME OVER! Era "${palabraActual.ngabere}" = "${palabraActual.espanol}" 💀`; generarTecladoJuego(); setTimeout(() => nuevaPalabraJuego(), 2500); }
+            }
+            actualizarInterfazJuego(); generarTecladoJuego(); updateXpAndStreak(); guardarPerfilUsuario();
+        }
+
+        function mostrarListaPalabras() {
+            const container = document.getElementById('palabrasLista');
+            const busqueda = document.getElementById('buscadorPalabras')?.value.toLowerCase() || '';
+            let palabrasFiltradas = [...diccionarioNgäbere];
+            if (filtroActual === 'aprendidas') palabrasFiltradas = palabrasFiltradas.filter(p => p.aprendida);
+            else if (filtroActual === 'pendientes') palabrasFiltradas = palabrasFiltradas.filter(p => !p.aprendida);
+            if (busqueda) palabrasFiltradas = palabrasFiltradas.filter(p => p.espanol.toLowerCase().includes(busqueda) || p.ngabere.toLowerCase().includes(busqueda));
+            if (!container) return;
+            container.innerHTML = '';
+            palabrasFiltradas.forEach(palabra => {
+                const div = document.createElement('div');
+                div.className = `palabra-item ${palabra.aprendida ? 'aprendida' : ''}`;
+                div.innerHTML = `<div class="palabra-imagen">${palabra.imagen}</div><div class="palabra-info"><div class="palabra-espanol">${palabra.espanol}</div><div class="palabra-ngabere">${palabra.ngabere}<-btn" data-palabra="${palabra.ngabere}">🔊</button></div></div><div class="palabra-accion"><div class="palabra-estado ${palabra.aprendida ? 'aprendida' : 'pendiente'}">${palabra.aprendida ? '⭐ Aprendida' : '📖 Por aprender'}</div>${!palabra.aprendida ? `<button class="boton-aprender" data-id="${palabra.id}">✅ Aprender</button>` : `<button class="boton-cancelar" data-id="${palabra.id}">❌ Cancelar</button>`}</div>`;
+                container.appendChild(div);
+            });
+            document.querySelectorAll('.boton-aprender').forEach(btn => btn.addEventListener('click', (e) => { e.stopPropagation();
+             marcarComoAprendida(parseInt(btn.dataset.id)); }));
+            document.querySelectorAll('.boton-cancelar').forEach(btn => btn.addEventListener('click', (e) => { e.stopPropagation(); 
+            marcarComoNoAprendida(parseInt(btn.dataset.id)); }));
+            document.querySelectorAll('.audio-btn').forEach(btn => btn.addEventListener('click', (e) => { e.stopPropagation(); 
+            reproducirAudio(btn.dataset.palabra,btn.dataset.audio); }));
+        }
+        function marcarComoAprendida(id) {
+            const palabra = diccionarioNgäbere.find(p => p.id === id);
+            if (palabra && !palabra.aprendida) { palabra.aprendida = true; palabrasAprendidas.push(id); guardarPalabrasUsuario(); userXP += 5; updateXpAndStreak(); guardarPerfilUsuario(); showModal('🎉 ¡Aprendida!', `"${palabra.espanol}" = "${palabra.ngabere}"\n+5 XP`); mostrarListaPalabras(); }
+        }
+        function marcarComoNoAprendida(id) {
+            const palabra = diccionarioNgäbere.find(p => p.id === id);
+            if (palabra && palabra.aprendida) { palabra.aprendida = false; const index = palabrasAprendidas.indexOf(id); if (index !== -1) palabrasAprendidas.splice(index, 1); guardarPalabrasUsuario(); showModal('📖 Cancelada', `"${palabra.espanol}" ya no está aprendida.`); mostrarListaPalabras(); }
+        }
+        function mostrarPalabras() { if (!currentUser) { showModal('⚠️ Sin sesión', 'Inicia sesión primero.'); return; } cargarPalabrasUsuario(); menuScreen.classList.remove('visible'); menuScreen.style.display = 'none'; mainApp.classList.remove('visible'); mainApp.style.display = 'none'; juegoApp.classList.remove('visible'); juegoApp.style.display = 'none'; palabrasPage.style.display = 'block'; palabrasPage.classList.add('visible'); mostrarListaPalabras(); }
+        function iniciarQuizPalabras() {
+            const palabrasParaQuiz = diccionarioNgäbere.filter(p => p.aprendida);
+            if (palabrasParaQuiz.length === 0) { showModal('📖 Sin palabras', 'Aprende al menos una palabra.'); return; }
+            currentQuestions = palabrasParaQuiz.map(p => ({ tipo: "escoger", text: `¿Qué significa "${p.ngabere}"?`, options: [p.espanol, ...diccionarioNgäbere.filter(w => w.id !== p.id).map(w => w.espanol).slice(0, 3)], correcta: p.espanol, imagen: null }));
+            currentQuestions.forEach(q => { for(let i = q.options.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [q.options[i], q.options[j]] = [q.options[j], q.options[i]]; } });
+            currentIndex = 0; currentLessonTitle = "Práctica de vocabulario"; answered = false; canAnswer = true;
+            palabrasPage.style.display = 'none'; juegoApp.style.display = 'none'; mainApp.style.display = 'block'; mainApp.classList.add('visible');
+            courseTitle.innerHTML = `🌿 ${currentLessonTitle}`; unitBadge.innerHTML = `📚 ${currentQuestions.length} preguntas`; userNameDisplay.innerText = currentUser; renderCurrentQuestion();
+        }
+
+        function initApp(username, lessonTitle) { currentUser = username; currentLessonTitle = lessonTitle; currentQuestions = revolverPreguntas([...todasLasPreguntas]); currentIndex = 0; answered = false; canAnswer = true; updateXpAndStreak(); renderCurrentQuestion(); courseTitle.innerHTML = `🌿 ${lessonTitle}`; unitBadge.innerHTML = `📚 ${currentQuestions.length} preguntas`; userNameDisplay.innerText = username; }
+        function renderCurrentQuestion() {
+            if (!currentQuestions.length || currentIndex >= currentQuestions.length) { questionText.innerHTML = `🎉 ¡Felicidades ${currentUser}! Completaste ${currentLessonTitle} 🎉`; questionImage.style.display = 'none'; optionsContainer.style.display = 'none'; escrituraContainer.style.display = 'none'; nextBtn.disabled = true; feedbackArea.innerHTML = '🏆 ¡Excelente trabajo! 🏆'; feedbackArea.className = 'comentario correct-comentario'; return; }
+            const q = currentQuestions[currentIndex];
+            if (q.imagen && questionImage) { questionImage.src = q.imagen; questionImage.style.display = 'block'; } else questionImage.style.display = 'none';
+            questionText.innerHTML = q.text;
+            if (q.tipo === 'escribir') { optionsContainer.style.display = 'none'; escrituraContainer.style.display = 'flex'; if (escrituraInput) escrituraInput.value = ''; if (escrituraInput) escrituraInput.disabled = false; if (escrituraBtn) escrituraBtn.disabled = false; }
+            else { optionsContainer.style.display = 'flex'; escrituraContainer.style.display = 'none'; optionsContainer.innerHTML = ''; q.opciones.forEach((opt, idx) => { const btn = document.createElement('button'); btn.className = 'option-btn'; btn.innerHTML = opt; btn.onclick = () => checkAnswer(opt, btn); optionsContainer.appendChild(btn); }); }
+            nextBtn.disabled = true; answered = false; canAnswer = true; feedbackArea.innerHTML = ''; feedbackArea.className = 'comentario'; if (escrituraBtn) escrituraBtn.onclick = () => checkEscrituraAnswer();
+        }
+        function checkAnswer(selected, btn) {
+            if (!canAnswer || answered) return;
+            const q = currentQuestions[currentIndex];
+            const isCorrect = selected.toLowerCase().trim() === q.correcta.toLowerCase().trim();
+            answered = true; canAnswer = false;
+            const allBtns = document.querySelectorAll('.option-btn');
+            if (isCorrect) { const gain = 10 + streak; userXP += gain; streak++; feedbackArea.innerHTML = `✅ ¡Correcto! +${gain} XP (Racha: ${streak})`; feedbackArea.className = 'comentario correct-comentario'; btn.classList.add('correct'); nextBtn.disabled = false; }
+            else { streak = 0; feedbackArea.innerHTML = `❌ Incorrecto. Era: ${q.correcta}`; feedbackArea.className = 'comentario error-comentario'; btn.classList.add('wrong'); if (allBtns) allBtns.forEach(b => { if (b.innerHTML === q.correcta) b.classList.add('correct'); }); nextBtn.disabled = false; }
+            if (allBtns) allBtns.forEach(b => b.style.pointerEvents = 'none'); updateXpAndStreak(); guardarPerfilUsuario();
+        }
+        function checkEscrituraAnswer() {
+            if (!canAnswer || answered) return;
+            const q = currentQuestions[currentIndex];
+            const userAns = escrituraInput ? escrituraInput.value.trim().toLowerCase() : '';
+            const isCorrect = userAns === q.correcta.toLowerCase();
+            answered = true; canAnswer = false;
+            if (isCorrect) { const gain = 10 + streak; userXP += gain; streak++; feedbackArea.innerHTML = `✅ ¡Correcto! +${gain} XP (Racha: ${streak})`; feedbackArea.className = 'comentario correct-comentario'; nextBtn.disabled = false; }
+            else { streak = 0; feedbackArea.innerHTML = `❌ Tu respuesta: "${userAns}". Era: ${q.correcta}`; feedbackArea.className = 'comentario error-comentario'; nextBtn.disabled = false; }
+            if (escrituraInput) escrituraInput.disabled = true; if (escrituraBtn) escrituraBtn.disabled = true; updateXpAndStreak(); guardarPerfilUsuario();
+        }
+        function nextQuestion() { if (currentIndex < currentQuestions.length - 1) { currentIndex++; renderCurrentQuestion(); } else { currentIndex++; renderCurrentQuestion(); } }
+        function restartLesson() { if (confirm('¿Reiniciar la lección?')) initApp(currentUser, currentLessonTitle); }
+
+        function mostrarRegistro() { coverScreen.classList.add('hidden'); coverScreen.style.display = 'none'; registroModal.classList.add('show'); }
+        function procesarRegistro() {
+            const nombre = registroNombre.value.trim();
+            const edad = parseInt(registroEdad.value);
+            let grupoSeleccionado = '';
+            const radios = document.querySelectorAll('input[name="grupoEdad"]');
+            for (let r of radios) if (r.checked) { grupoSeleccionado = r.value; break; }
+            if (!nombre) { alert('✨ Ingresa tu nombre'); return; }
+            if (isNaN(edad) || edad < 1 || edad > 120) { alert('📅 Edad válida (1-120)'); return; }
+            if (!grupoSeleccionado) { alert('🌟 Selecciona una opción'); return; }
+            currentUser = nombre; userEdad = edad; userGrupo = grupoSeleccionado;
+            const perfilGuardado = localStorage.getItem(`perfil_${currentUser}`);
+            if (perfilGuardado) { const perfil = JSON.parse(perfilGuardado); userXP = perfil.xp || 0; streak = perfil.streak || 0; juegoPuntaje = perfil.juegoPuntaje || 0; }
+            else { userXP = 0; streak = 0; juegoPuntaje = 0; }
+            alert(`🎉 ¡Bienvenido/a ${currentUser}! ¡Comienza tu aventura! 🌿`);
+            registroModal.classList.remove('show'); showMenu(currentUser);
+        }
+        function cancelarRegistro() { registroModal.classList.remove('show'); showCover(); }
+        registroEdad.addEventListener('input', function() { const e = parseInt(this.value); if (!isNaN(e)) { if (e >= 5 && e <= 12) document.getElementById('opcionNino').checked = true; else if (e >= 13 && e <= 17) document.getElementById('opcionAdolescente').checked = true; else if (e >= 18 && e <= 50) document.getElementById('opcionAdulto').checked = true; else if (e > 50) document.getElementById('opcionOtro').checked = true; } });
+        function showCover() { coverScreen.classList.remove('hidden'); coverScreen.style.display = 'flex'; registroModal.classList.remove('show'); menuScreen.classList.remove('visible'); menuScreen.style.display = 'none'; mainApp.classList.remove('visible'); mainApp.style.display = 'none'; juegoApp.classList.remove('visible'); juegoApp.style.display = 'none'; palabrasPage.classList.remove('visible'); palabrasPage.style.display = 'none'; }
+        function showMenu(username) { coverScreen.classList.add('hidden'); coverScreen.style.display = 'none'; registroModal.classList.remove('show'); menuScreen.style.display = 'block'; menuScreen.classList.add('visible'); mainApp.classList.remove('visible'); mainApp.style.display = 'none'; juegoApp.classList.remove('visible'); juegoApp.style.display = 'none'; palabrasPage.classList.remove('visible'); palabrasPage.style.display = 'none'; menuUserName.innerText = username; menuAvatar.innerText = username.charAt(0).toUpperCase(); let edadTexto = userGrupo === 'niño' ? '🧒 Niño/a' : userGrupo === 'adolescente' ? '🎓 Adolescente' : userGrupo === 'adulto' ? '💼 Adulto' : '🍃 Sabio/a'; userEdadBadge.innerHTML = `${edadTexto} · ${userEdad} años`; cargarPalabrasUsuario(); updateXpAndStreak(); }
+        function showQuiz(username, title) { coverScreen.classList.add('hidden'); coverScreen.style.display = 'none'; menuScreen.classList.remove('visible'); menuScreen.style.display = 'none'; juegoApp.classList.remove('visible'); juegoApp.style.display = 'none'; palabrasPage.classList.remove('visible'); palabrasPage.style.display = 'none'; mainApp.style.display = 'block'; mainApp.classList.add('visible'); initApp(username, title); }
+
+        loginStartBtn.onclick = mostrarRegistro;
+        confirmarRegistroBtn.onclick = procesarRegistro;
+        cancelarRegistroBtn.onclick = cancelarRegistro;
+        menuLogoutBtn.onclick = () => { if (confirm('¿Cerrar sesión?')) showCover(); };
+        backToMenuBtn.onclick = () => { if (currentUser) showMenu(currentUser); else showCover(); };
+        volverMenuJuego.onclick = () => { if (currentUser) showMenu(currentUser); else showCover(); };
+        reiniciarJuegoBtn.onclick = nuevaPalabraJuego;
+        resetBtn.onclick = restartLesson;
+        nextBtn.onclick = nextQuestion;
+        closeModalBtn.onclick = closeModal;
+        infoModal.onclick = (e) => { if (e.target === infoModal) closeModal(); };
+        document.querySelectorAll('.menu-option').forEach(opt => { opt.onclick = () => { const action = opt.dataset.action, username = menuUserName.innerText; if (action === 'quiz') showQuiz(username, opt.dataset.title || '🌟 Lección Completa'); else if (action === 'juego') iniciarJuego(); else if (action === 'info') { const info = infoData[opt.dataset.info]; if (info) showModal(info.title, info.text); } else if (action === 'palabras') mostrarPalabras(); }; });
+        document.getElementById('viewProgressBtn') && (document.getElementById('viewProgressBtn').onclick = () => { if (!currentUser) { showModal('⚠️ Sin sesión', 'Inicia sesión.'); return; } let grupoT = userGrupo === 'niño' ? 'Niño/a (5-12)' : userGrupo === 'adolescente' ? 'Adolescente (13-17)' : userGrupo === 'adulto' ? 'Adulto (18-50)' : 'Sabio/a (50+)'; let txt = `📊 Progreso de ${currentUser}\n\n🎂 ${userEdad} años (${grupoT})\n⭐ XP: ${userXP}\n🔥 Racha: ${streak}\n📖 Palabras: ${diccionarioNgäbere.filter(p => p.aprendida).length}/${diccionarioNgäbere.length}\n🎮 Juego: ${juegoPuntaje} pts`; showModal('📊 Tu Progreso', txt); });
+        document.getElementById('volverMenuPalabras') && (document.getElementById('volverMenuPalabras').onclick = () => { if (currentUser) showMenu(currentUser); else showCover(); });
+        document.getElementById('practicarPalabrasBtn') && (document.getElementById('practicarPalabrasBtn').onclick = iniciarQuizPalabras);
+        document.getElementById('filtroTodas') && (document.getElementById('filtroTodas').onclick = () => { document.querySelectorAll('.filtro-btn').forEach(b => b.classList.remove('activo')); document.getElementById('filtroTodas').classList.add('activo'); filtroActual = 'todas'; mostrarListaPalabras(); });
+        document.getElementById('filtroAprendidas') && (document.getElementById('filtroAprendidas').onclick = () => { document.querySelectorAll('.filtro-btn').forEach(b => b.classList.remove('activo')); document.getElementById('filtroAprendidas').classList.add('activo'); filtroActual = 'aprendidas'; mostrarListaPalabras(); });
+        document.getElementById('filtroPendientes') && (document.getElementById('filtroPendientes').onclick = () => { document.querySelectorAll('.filtro-btn').forEach(b => b.classList.remove('activo')); document.getElementById('filtroPendientes').classList.add('activo'); filtroActual = 'pendientes'; mostrarListaPalabras(); });
+        document.getElementById('buscadorPalabras') && (document.getElementById('buscadorPalabras').oninput = mostrarListaPalabras);
+        
+        showCover();
+    </script>
+</body>
+</html>
