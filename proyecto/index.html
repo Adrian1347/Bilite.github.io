@@ -91,6 +91,33 @@ body::before {
     transform: scale(1.02);
     box-shadow: 0 0 20px rgba(76, 175, 80, 0.8), 0 0 30px rgba(76, 175, 80, 0.4);
 }
+
+.invitado-btn {
+    background: linear-gradient(135deg, #1a472a, #0d2818);
+    color: #e8f5e9;
+    border: 1px solid rgba(76, 175, 80, 0.3);
+    padding: 6px 16px;
+    font-size: 13px;
+    font-weight: 500;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: none;
+    letter-spacing: 0.3px;
+    font-family: 'Segoe UI', system-ui, sans-serif;
+}
+
+.start-btn:hover {
+    background: linear-gradient(135deg, #2e5a35, #1a3a22);
+    border-color: rgba(76, 175, 80, 0.6);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.start-btn:active {
+    transform: translateY(0);
+}
+
 /*registro(nombre,edad)*/
 .registro-modal {
     display: none;
@@ -110,6 +137,8 @@ body::before {
     display: flex;
 }
 
+
+
 .registro-content {
     background: linear-gradient(145deg, #1e2a1c, #0f1a0d);
     border-radius: 48px;
@@ -122,6 +151,7 @@ body::before {
     animation: modalEntrada 0.4s cubic-bezier(0.34, 1.2, 0.64, 1);
     position: relative;
 }
+
 
 .registro-content::before {
     content: '';
@@ -137,10 +167,12 @@ body::before {
     filter: blur(8px);
 }
 
+
 @keyframes modalEntrada {
     from { opacity: 0; transform: scale(0.9) translateY(20px); }
     to { opacity: 1; transform: scale(1) translateY(0); }
 }
+
 
 .registro-content h2 {
     background: linear-gradient(135deg, #81c784, #ff9800);
@@ -153,6 +185,8 @@ body::before {
     text-shadow: 0 0 20px rgba(129, 199, 132, 0.3);
 }
 
+
+
 .registro-content p {
     color: #c8e6c9;
     margin-bottom: 20px;
@@ -163,6 +197,8 @@ body::before {
     margin-bottom: 16px;
     text-align: left;
 }
+
+
 
 .registro-grupo label {
     display: block;
@@ -1000,12 +1036,14 @@ body::before {
 </div>
 
 <div id="registroModal" class="registro-modal">
-    <div class="registro-content">
+    
+    <div class="registro-content">  
         <h2>✨ ¡Bienvenido! ✨</h2>
         <p>Cuéntanos un poco sobre ti</p>
         <div class="registro-grupo">
             <label>📝 Nombre</label>
             <input type="text" id="registroNombre" placeholder="Escriba su nombre ..." maxlength="30">
+             
         </div>
         <div class="registro-grupo">
             <label>🎂 Edad</label>
@@ -1047,7 +1085,7 @@ body::before {
     <div class="menu-encabezado">
         <div class="user-info">
             <div class="user-perfil" id="menuAvatar">👤</div>
-            <div>
+            <div> 
                 <span class="user-name" id="menuUserName">Usuario</span>
                 <div class="user-edad" id="userEdadBadge"></div>
             </div>
@@ -1170,12 +1208,12 @@ body::before {
     <script>
         // ===== DICCIONARIO COMPLETO ORDENADO ALFABÉTICAMENTE POR ESPAÑOL =====
         const diccionarioNgäbere = [
-            { id: 4, espanol: "Abuela", ngabere: "Mole", aprendida: false, imagen: "👵",audio: "audio/abuela.mp3" },
-            { id: 3, espanol: "Abuelo", ngabere: "Ruai", aprendida: false, imagen: "👴",audio: "audio/abuelo.mp3" },
-            { id: 43, espanol: "Ahora", ngabere: "Nengwane", aprendida: false, imagen: "⏰",audio: "audio/ahora.mp3" },
-            { id: 13, espanol: "Amarillo", ngabere: "Sübrürero", aprendida: false, imagen: "🟡",audio: "audio/amarillo.mp3" },
-            { id: 50, espanol: "Ardilla", ngabere: "Köntän", aprendida: false, imagen: "🐿️",audio: "audio/ardilla.mp3" },
-            { id: 16, espanol: "Azul", ngabere: "Mrene", aprendida: false, imagen: "🔵",audio: "audio/azul.mp3" },
+            { id: 4, espanol: "Abuela", ngabere: "Mole", aprendida: false, imagen: "👵",audio:"audios/abuela.mp3" },
+            { id: 3, espanol: "Abuelo", ngabere: "Ruai", aprendida: false, imagen: "👴" },
+            { id: 43, espanol: "Ahora", ngabere: "Nengwane", aprendida: false, imagen: "⏰" },
+            { id: 13, espanol: "Amarillo", ngabere: "Sübrürero", aprendida: false, imagen: "🟡" },
+            { id: 50, espanol: "Ardilla", ngabere: "Köntän", aprendida: false, imagen: "🐿️" },
+            { id: 16, espanol: "Azul", ngabere: "Mrene", aprendida: false, imagen: "🔵" },
             { id: 29, espanol: "Boca", ngabere: "Kata", aprendida: false, imagen: "👄" },
             { id: 34, espanol: "Cabeza", ngabere: "Duo", aprendida: false, imagen: "🗣️" },
             { id: 60, espanol: "Caballo", ngabere: "Mätä", aprendida: false, imagen: "🐎" },
@@ -1232,7 +1270,7 @@ body::before {
             { id: 42, espanol: "Bueno/Bien", ngabere: "Kwin", aprendida: false, imagen: "👍" },
             { id: 54, espanol: "Zarigüeya", ngabere: "Kotä", aprendida: false, imagen: "🦦" }
         ];
-
+/*Palabras seleccionadas para el juego del ahorcado con pistas y emojis*/
         const palabrasJuego = [
             { espanol: "Papá", ngabere: "Rün", pista: "Padre" },
             { espanol: "Mamá", ngabere: "Meye", pista: "Madre" },
@@ -1244,7 +1282,7 @@ body::before {
             { espanol: "Uno", ngabere: "Kwati", pista: "Número singular" },
             { espanol: "Corazón", ngabere: "Brukwä", pista: "Órgano del amor" }
         ];
-
+        /*Preguntas seleccionadas para el quiz de estudio con imágenes y opciones*/
         const todasLasPreguntas = [
             { tipo: "escoger", text: "¿Cómo se dice 'Papá' en Ngäbere?", correcta: "Rün", opciones: ["Meye", "Rün", "Ruai", "Mole"], imagen: "Gemini_Generated_Image_z68sa4z68sa4z68s.png" },
             { tipo: "escoger", text: "¿Qué significa 'Meye' en español?", correcta: "Mamá", opciones: ["Papá", "Mamá", "Abuelo", "Hermano"], imagen: "Gemini_Generated_Image_56mafj56mafj56ma.png" },
@@ -1263,11 +1301,13 @@ body::before {
             return preguntas;
         }
 
+
         let currentUser = '', userEdad = 0, userGrupo = '', currentQuestions = [], currentIndex = 0;
         let userXP = 0, streak = 0, answered = false, canAnswer = true, currentLessonTitle = '';
         let palabrasAprendidas = [];
         let juegoPuntaje = 0, juegoRacha = 0, palabraActual = null, palabraOculta = [], letrasAdivinadas = [], intentosRestantes = 6, juegoActivo = true;
         let filtroActual = 'todas';
+
 
         const coverScreen = document.getElementById('coverScreen'), 
             registroModal = document.getElementById('registroModal'), 
@@ -1287,21 +1327,24 @@ body::before {
             menuAvatar = document.getElementById('menuAvatar'),
             userEdadBadge = document.getElementById('userEdadBadge'),
             userNameDisplay = document.getElementById('userNameDisplay');
-
+/*Elementos del DOM para el quiz de estudio con áreas de pregunta, opciones, feedback y progreso*/
         const nextBtn = document.getElementById('nextBtn'), 
             resetBtn = document.getElementById('resetBtn'), 
             feedbackArea = document.getElementById('feedbackArea'),
             questionText = document.getElementById('questionText'),
+            /*Elementos del DOM para el juego del ahorcado con áreas de palabra oculta, letras, puntaje y mensajes*/
             questionImage = document.getElementById('questionImage'),
             optionsContainer = document.getElementById('optionsContainer'),
             escrituraContainer = document.getElementById('escrituraContainer'), 
             escrituraInput = document.getElementById('escrituraInput'), 
             escrituraBtn = document.getElementById('escrituraBtn'), 
+            
             streakCount = document.getElementById('streakCount'), 
             xpCount = document.getElementById('xpCount'), 
             xpFill = document.getElementById('xpFill'), 
             courseTitle = document.getElementById('courseTitle'), 
             unitBadge = document.getElementById('unitBadge');
+            
 
         const juegoPuntajeSpan = document.getElementById('juegoPuntaje'), 
             intentosRestantesSpan = document.getElementById('intentosRestantes'), 
@@ -1329,15 +1372,36 @@ body::before {
         function cargarPalabrasUsuario() { const g = localStorage.getItem(`palabras_${currentUser}_${userEdad}`); if (g) { palabrasAprendidas = JSON.parse(g); diccionarioNgäbere.forEach(p => p.aprendida = palabrasAprendidas.includes(p.id)); } actualizarContadorPalabras(); }
         function actualizarContadorPalabras() { const a = diccionarioNgäbere.filter(p => p.aprendida).length; document.getElementById('menuPalabrasCount') && (document.getElementById('menuPalabrasCount').textContent = a); document.getElementById('palabrasAprendidasCount') && (document.getElementById('palabrasAprendidasCount').textContent = a); }
         function updateXpAndStreak() { xpCount && (xpCount.innerText = userXP); streakCount && (streakCount.innerText = streak); xpFill && (xpFill.style.width = `${userXP % 100}%`); actualizarContadorPalabras(); }
+
+        function obtenerRango(xp) {
+    if (xp < 50)   return { nombre: "🌱 Semilla",       color: "#a5d6a7" };
+    if (xp < 150)  return { nombre: "🌿 Brotando",      color: "#66bb6a" };
+    if (xp < 300)  return { nombre: "🍃 Aprendiz",      color: "#43a047" };
+    if (xp < 500)  return { nombre: "🌳 Conocedor",     color: "#2e7d32" };
+    if (xp < 800)  return { nombre: "⭐ Ngäbere",       color: "#ff9800" };
+    if (xp < 1200) return { nombre: "🔥 Guardián",      color: "#f57c00" };
+    if (xp < 2000) return { nombre: "💎 Sabio",         color: "#29b6f6" };
+    return             { nombre: "🏆 Gran Maestro",     color: "#ffd700" };
+}
         
-        function usarTTS(texto) {
-            if (!texto) return;
+   function reproducirAudio(texto, archivoAudio) {
+    if (archivoAudio) {
+        const audio = new Audio(archivoAudio);
+        audio.play().catch(() => {
             window.speechSynthesis.cancel();
             const speech = new SpeechSynthesisUtterance(texto);
             speech.lang = 'es-ES';
-            speech.rate = 1.0;
+            speech.rate = 0.8;
             window.speechSynthesis.speak(speech);
-        }
+        });
+        return;
+    }
+    window.speechSynthesis.cancel();
+    const speech = new SpeechSynthesisUtterance(texto);
+    speech.lang = 'es-ES';
+    speech.rate = 0.8;
+    window.speechSynthesis.speak(speech);
+}
         
         function showModal(title, text) { modalTitle.innerText = title; modalText.innerText = text; infoModal.classList.add('show'); }
         function closeModal() { infoModal.classList.remove('show'); }
@@ -1418,15 +1482,12 @@ body::before {
             palabrasFiltradas.forEach(palabra => {
                 const div = document.createElement('div');
                 div.className = `palabra-item ${palabra.aprendida ? 'aprendida' : ''}`;
-                div.innerHTML = `<div class="palabra-imagen">${palabra.imagen}</div><div class="palabra-info"><div class="palabra-espanol">${palabra.espanol}</div><div class="palabra-ngabere">${palabra.ngabere}<-btn" data-palabra="${palabra.ngabere}">🔊</button></div></div><div class="palabra-accion"><div class="palabra-estado ${palabra.aprendida ? 'aprendida' : 'pendiente'}">${palabra.aprendida ? '⭐ Aprendida' : '📖 Por aprender'}</div>${!palabra.aprendida ? `<button class="boton-aprender" data-id="${palabra.id}">✅ Aprender</button>` : `<button class="boton-cancelar" data-id="${palabra.id}">❌ Cancelar</button>`}</div>`;
+                div.innerHTML = `<div class="palabra-imagen">${palabra.imagen}</div><div class="palabra-info"><div class="palabra-espanol">${palabra.espanol}</div><div class="palabra-ngabere">${palabra.ngabere}<button id="audio-${palabra.id}" onclick="reproducirAudio('${palabra.ngabere}', '${palabra.audio || ''}')">🔊</button></div></div><div class="palabra-accion"><div class="palabra-estado ${palabra.aprendida ? 'aprendida' : 'pendiente'}">${palabra.aprendida ? '⭐ Aprendida' : '📖 Por aprender'}</div>${!palabra.aprendida ? `<button class="boton-aprender" data-id="${palabra.id}">✅ Aprender</button>` : `<button class="boton-cancelar" data-id="${palabra.id}">❌ Cancelar</button>`}</div>`;
                 container.appendChild(div);
             });
-            document.querySelectorAll('.boton-aprender').forEach(btn => btn.addEventListener('click', (e) => { e.stopPropagation();
-             marcarComoAprendida(parseInt(btn.dataset.id)); }));
-            document.querySelectorAll('.boton-cancelar').forEach(btn => btn.addEventListener('click', (e) => { e.stopPropagation(); 
-            marcarComoNoAprendida(parseInt(btn.dataset.id)); }));
-            document.querySelectorAll('.audio-btn').forEach(btn => btn.addEventListener('click', (e) => { e.stopPropagation(); 
-            reproducirAudio(btn.dataset.palabra,btn.dataset.audio); }));
+            document.querySelectorAll('.boton-aprender').forEach(btn => btn.addEventListener('click', (e) => { e.stopPropagation(); marcarComoAprendida(parseInt(btn.dataset.id)); }));
+            document.querySelectorAll('.boton-cancelar').forEach(btn => btn.addEventListener('click', (e) => { e.stopPropagation(); marcarComoNoAprendida(parseInt(btn.dataset.id)); }));
+
         }
         function marcarComoAprendida(id) {
             const palabra = diccionarioNgäbere.find(p => p.id === id);
@@ -1481,6 +1542,7 @@ body::before {
         function restartLesson() { if (confirm('¿Reiniciar la lección?')) initApp(currentUser, currentLessonTitle); }
 
         function mostrarRegistro() { coverScreen.classList.add('hidden'); coverScreen.style.display = 'none'; registroModal.classList.add('show'); }
+
         function procesarRegistro() {
             const nombre = registroNombre.value.trim();
             const edad = parseInt(registroEdad.value);
@@ -1498,12 +1560,53 @@ body::before {
             registroModal.classList.remove('show'); showMenu(currentUser);
         }
         function cancelarRegistro() { registroModal.classList.remove('show'); showCover(); }
-        registroEdad.addEventListener('input', function() { const e = parseInt(this.value); if (!isNaN(e)) { if (e >= 5 && e <= 12) document.getElementById('opcionNino').checked = true; else if (e >= 13 && e <= 17) document.getElementById('opcionAdolescente').checked = true; else if (e >= 18 && e <= 50) document.getElementById('opcionAdulto').checked = true; else if (e > 50) document.getElementById('opcionOtro').checked = true; } });
-        function showCover() { coverScreen.classList.remove('hidden'); coverScreen.style.display = 'flex'; registroModal.classList.remove('show'); menuScreen.classList.remove('visible'); menuScreen.style.display = 'none'; mainApp.classList.remove('visible'); mainApp.style.display = 'none'; juegoApp.classList.remove('visible'); juegoApp.style.display = 'none'; palabrasPage.classList.remove('visible'); palabrasPage.style.display = 'none'; }
-        function showMenu(username) { coverScreen.classList.add('hidden'); coverScreen.style.display = 'none'; registroModal.classList.remove('show'); menuScreen.style.display = 'block'; menuScreen.classList.add('visible'); mainApp.classList.remove('visible'); mainApp.style.display = 'none'; juegoApp.classList.remove('visible'); juegoApp.style.display = 'none'; palabrasPage.classList.remove('visible'); palabrasPage.style.display = 'none'; menuUserName.innerText = username; menuAvatar.innerText = username.charAt(0).toUpperCase(); let edadTexto = userGrupo === 'niño' ? '🧒 Niño/a' : userGrupo === 'adolescente' ? '🎓 Adolescente' : userGrupo === 'adulto' ? '💼 Adulto' : '🍃 Sabio/a'; userEdadBadge.innerHTML = `${edadTexto} · ${userEdad} años`; cargarPalabrasUsuario(); updateXpAndStreak(); }
-        function showQuiz(username, title) { coverScreen.classList.add('hidden'); coverScreen.style.display = 'none'; menuScreen.classList.remove('visible'); menuScreen.style.display = 'none'; juegoApp.classList.remove('visible'); juegoApp.style.display = 'none'; palabrasPage.classList.remove('visible'); palabrasPage.style.display = 'none'; mainApp.style.display = 'block'; mainApp.classList.add('visible'); initApp(username, title); }
+        registroEdad.addEventListener('input', function() { const e = parseInt(this.value);
+             if (!isNaN(e)) { if (e >= 5 && e <= 12) document.getElementById('opcionNino').checked = true; 
+               else if (e >= 13 && e <= 17) document.getElementById('opcionAdolescente').checked = true; else if (e >= 18 && e <= 50) document.getElementById('opcionAdulto').checked = true;
+                else if (e > 50) document.getElementById('opcionOtro').checked = true; } });
+        function showCover() { coverScreen.classList.remove('hidden'); coverScreen.style.display = 'flex'; 
+         registroModal.classList.remove('show'); 
+         menuScreen.classList.remove('visible');
+         menuScreen.style.display = 'none'; 
+         mainApp.classList.remove('visible');
+         mainApp.style.display = 'none'; 
+         juegoApp.classList.remove('visible');
+         juegoApp.style.display = 'none';
+         palabrasPage.classList.remove('visible'); 
+          palabrasPage.style.display = 'none'; }
+        function showMenu(username) { coverScreen.classList.add('hidden');
+         coverScreen.style.display = 'none'; registroModal.classList.remove('show');
+          menuScreen.style.display = 'block'; 
+          menuScreen.classList.add('visible');
+          mainApp.classList.remove('visible');
+          mainApp.style.display = 'none'; 
+          juegoApp.classList.remove('visible');
+          juegoApp.style.display = 'none';
+          palabrasPage.classList.remove('visible'); 
+          palabrasPage.style.display = 'none'; 
+          menuUserName.innerText = username; 
+          menuAvatar.innerText = username.charAt(0).toUpperCase(); 
+          let edadTexto = userGrupo === 'niño' ? '🧒 Niño/a' : userGrupo === 'adolescente' ? '🎓 Adolescente' : userGrupo === 'adulto' ? '💼 Adulto' : '🍃 Sabio/a'; 
+        userEdadBadge.innerHTML = `${edadTexto} · ${userEdad} años`;
+          const rango = obtenerRango(userXP);
+          const rangoExistente = document.getElementById('rangoBadge');
+           if (rangoExistente) rangoExistente.remove();
+          const rangoBadge = document.createElement('div');
+                rangoBadge.id = 'rangoBadge';
+                rangoBadge.style.cssText = `font-size:12px; padding:3px 12px; border-radius:20px; margin-top:4px; font-weight:bold; color:${rango.color}; background:rgba(0,0,0,0.3); border:1px solid ${rango.color}; display:inline-block;`;
+                rangoBadge.innerHTML = rango.nombre;
+                    userEdadBadge.parentElement.appendChild(rangoBadge);
+          cargarPalabrasUsuario(); updateXpAndStreak(); }
+        function showQuiz(username, title) { coverScreen.classList.add('hidden'); 
+        coverScreen.style.display = 'none'; menuScreen.classList.remove('visible');
+        menuScreen.style.display = 'none'; juegoApp.classList.remove('visible'); 
+        juegoApp.style.display = 'none'; palabrasPage.classList.remove('visible');
+        palabrasPage.style.display = 'none'; mainApp.style.display = 'block'; 
+        mainApp.classList.add('visible'); initApp(username, title); }
 
         loginStartBtn.onclick = mostrarRegistro;
+       
+    
         confirmarRegistroBtn.onclick = procesarRegistro;
         cancelarRegistroBtn.onclick = cancelarRegistro;
         menuLogoutBtn.onclick = () => { if (confirm('¿Cerrar sesión?')) showCover(); };
