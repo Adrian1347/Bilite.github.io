@@ -60,7 +60,6 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 .m-card h3{color:#81c784;margin-bottom:6px;font-size:17px;}
 .m-card p{color:#a5d6a7;font-size:11px;}
 /* === CONECTORES CARD === */
-.m-card.conectores-card{}
 .inner-cards-row{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:14px;}
 .inner-mini{background:rgba(20,40,20,0.7);border:1px solid rgba(76,175,80,0.35);border-radius:14px;padding:10px 6px;text-align:center;cursor:pointer;transition:all .2s;}
 .inner-mini:hover{background:rgba(46,125,50,0.4);border-color:#81c784;transform:translateY(-2px);}
@@ -180,7 +179,7 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 .aj-sec-t{padding:9px 14px;font-size:10px;font-weight:800;letter-spacing:1.5px;color:#ff9800;text-transform:uppercase;background:rgba(255,152,0,.08);border-bottom:1px solid rgba(76,175,80,.15);}
 .aj-row{display:flex;align-items:center;justify-content:space-between;padding:11px 14px;cursor:pointer;transition:all .2s;border-bottom:1px solid rgba(76,175,80,.1);gap:10px;}
 .aj-row:last-child{border-bottom:none;}
-.aj-row:hover{background:rgba(76,175,80,.1);}
+.aj-row:hover{background:rgba(76,175,80,.1);} 
 .aj-left{display:flex;align-items:center;gap:10px;flex:1;}
 .aj-ico{width:32px;height:32px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
 .aj-t{font-size:12px;font-weight:600;color:#e8f5e9;}
@@ -227,7 +226,7 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
       <button class="btn btn-cafe" id="btnGuestOk" style="width:100%;">Entrar</button>
     </div>
     <hr style="margin:12px 0;border-color:#4caf50;">
-    <button id="btnShowReg" style="background:transparent;color:#a5d6a7;border:none;cursor:pointer;font-size:12px;">📝 ¿Nuevo? Regístrate aquí</button>
+    <button id="btnShowReg" style="background:transparent;color:#a5d6a7;border:none;cursor:pointer;font-size:12px;"> ¿Nuevo? Regístrate aquí</button>
   </div>
 </div>
 
@@ -236,18 +235,18 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
   <div class="modal">
     <h2>✨ ¡Bienvenido! ✨</h2>
     <p>Cuéntanos sobre ti</p>
-    <div class="rg"><label>📝 Nombre</label><input type="text" id="lNombre" placeholder="Tu nombre" maxlength="30"></div>
-    <div class="rg"><label>🎂 Edad</label><input type="number" id="lEdad" placeholder="Ej: 15" min="1" max="120"></div>
+    <div class="rg"><label> Nombre</label><input type="text" id="lNombre" placeholder="Tu nombre" maxlength="30"></div>
+    <div class="rg"><label>Edad</label><input type="number" id="lEdad" placeholder="Ej: 15" min="1" max="120"></div>
     <div style="background:rgba(46,125,50,.2);border-radius:18px;padding:10px;margin:10px 0;border:1px solid rgba(76,175,80,.3);">
-      <p style="color:#ffb74d;font-size:12px;font-weight:bold;margin-bottom:7px;text-align:center;">🌟 ¿Cómo te describes?</p>
-      <div class="opcion-r"><input type="radio" name="gr" id="grN" value="niño"><label for="grN">🧒 Niño/a (5-12)</label></div>
-      <div class="opcion-r"><input type="radio" name="gr" id="grA" value="adolescente"><label for="grA">🎓 Adolescente (13-17)</label></div>
-      <div class="opcion-r"><input type="radio" name="gr" id="grAd" value="adulto"><label for="grAd">💼 Adulto (18-50)</label></div>
+      <p style="color:#ffb74d;font-size:12px;font-weight:bold;margin-bottom:7px;text-align:center;"> ¿Cómo te describes?</p>
+      <div class="opcion-r"><input type="radio" name="gr" id="grN" value="niño"><label for="grN">Niño/a (5-12)</label></div>
+      <div class="opcion-r"><input type="radio" name="gr" id="grA" value="adolescente"><label for="grA">Adolescente (13-17)</label></div>
+      <div class="opcion-r"><input type="radio" name="gr" id="grAd" value="adulto"><label for="grAd">Adulto (18-50)</label></div>
       <div class="opcion-r"><input type="radio" name="gr" id="grO" value="otro"><label for="grO">🍃 Mayor de 50</label></div>
     </div>
     <div class="rb">
-      <button class="btn" id="btnLocalOk">✅ Comenzar</button>
-      <button class="btn btn-cafe" id="btnLocalCancel">❌ Salir</button>
+      <button class="btn" id="btnLocalOk">Comenzar</button>
+      <button class="btn btn-cafe" id="btnLocalCancel"> Salir</button>
     </div>
   </div>
 </div>
@@ -271,6 +270,7 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 <div id="menuPage" class="page">
   <div class="hdr">
     <div class="u-info">
+      
       <div class="avatar" id="menuAv" onclick="abrirAj()">🌿</div>
       <div>
         <div class="u-name" id="menuNombre">Usuario</div>
@@ -280,10 +280,10 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
     <button class="btn-aj" id="btnAj">⚙️ Ajustes</button>
   </div>
   <div class="stats-row">
-    <div class="stat-box"><div class="stat-val" id="sXP">0</div><div class="stat-lbl">⭐ XP Total</div><div class="xp-mini"><div class="xp-mini-fill" id="xpMini"></div></div></div>
-    <div class="stat-box"><div class="stat-val" id="sStreak">0</div><div class="stat-lbl">🔥 Racha</div></div>
-    <div class="stat-box"><div class="stat-val" id="sRango">🌱</div><div class="stat-lbl">Tu rango</div></div>
-  </div>
+  <div class="stat-box" style="cursor:pointer;" onclick="infoXP()"><div class="stat-val" id="sXP">0</div><div class="stat-lbl">⭐ XP Total</div><div class="xp-mini"><div class="xp-mini-fill" id="xpMini"></div></div></div>
+  <div class="stat-box" style="cursor:pointer;" onclick="infoRacha()"><div class="stat-val" id="sStreak">0</div><div class="stat-lbl">🔥 Racha</div></div>
+  <div class="stat-box" style="cursor:pointer;" onclick="infoRango()"><div class="stat-val" id="sRango">🌱</div><div class="stat-lbl">Tu rango</div></div>
+</div>
   <div class="menu-grid">
     <div class="m-card" data-go="dict"><div class="m-ico">📖</div><h3>Diccionario</h3><p>Vocabulario Ngäbere–Español</p></div>
     <div class="m-card" data-go="lec"><div class="m-ico">🎯</div><h3>Lección de Estudio</h3><p>Elige un tema y practica</p></div>
@@ -448,7 +448,7 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
       <p style="color:#a5d6a7;font-size:12px;text-align:center;margin-bottom:14px;">Letras especiales: <strong style="color:#ffb74d;">ä, ö, ü</strong> · Toca cada letra para escucharla</p>
       <div id="abcGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px;"></div>
       <div style="background:rgba(46,125,50,.15);border-radius:18px;padding:12px;margin-top:14px;border:1px solid rgba(76,175,80,.3);">
-        <p style="color:#ffb74d;font-weight:bold;font-size:12px;margin-bottom:7px;">📌 Pronunciación</p>
+        <p style="color:#ffb74d;font-weight:bold;font-size:12px;margin-bottom:7px;">Pronunciación</p>
         <ul style="color:#c8e6c9;font-size:11px;line-height:2;padding-left:14px;">
           <li><strong style="color:#81c784;">ä</strong> — "a" abierta y corta</li>
           <li><strong style="color:#81c784;">ö</strong> — entre "o" y "e"</li>
@@ -490,19 +490,19 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
   <div class="con-box">
     <div class="con-hdr">
       <h2>🔗 Conectores</h2>
-      <p>Elige una categoría para explorar · Toca cada elemento para escucharlo</p>
+      <p>Elige una categoría para explorar </p>
     </div>
     <div class="pbox-body">
       <div class="con-sub-grid" id="conSubGrid">
         <div class="con-sub-card" onclick="mostrarConectores('verbos')">
-          <div style="font-size:2rem;margin-bottom:6px;">✏️</div>
+          <div style="font-size:2rem;margin-bottom:6px;"></div>
           <h3>Verbos</h3>
-          <p>24 verbos esenciales</p>
+          <p>2 verbos </p>
         </div>
         <div class="con-sub-card" onclick="mostrarConectores('pronombres')">
-          <div style="font-size:2rem;margin-bottom:6px;">👤</div>
+          <div style="font-size:2rem;margin-bottom:6px;"></div>
           <h3>Pronombres</h3>
-          <p>25 pronombres</p>
+          <p>6 pronombres</p>
         </div>
       </div>
       <div id="conContenido"></div>
@@ -590,7 +590,7 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
       <div class="aj-sec">
         <div class="aj-sec-t">ℹ️ Acerca de</div>
         <div class="aj-row" onclick="ajAcc('info')"><div class="aj-left"><div class="aj-ico" style="background:rgba(76,175,80,.2);">🌿</div><div><div class="aj-t">Información del proyecto</div></div></div><span class="aj-arr">›</span></div>
-        <div class="aj-row"><div class="aj-left"><div class="aj-ico" style="background:rgba(33,150,243,.2);">📱</div><div><div class="aj-t">Versión</div></div></div><span class="aj-v">2.0.0</span></div>
+        <div class="aj-row"><div class="aj-left"><div class="aj-ico" style="background:rgba(33,150,243,.2);"></div><div><div class="aj-t">Versión</div></div></div><span class="aj-v">2.0.0</span></div>
         <div class="aj-row" onclick="ajAcc('cred')"><div class="aj-left"><div class="aj-ico" style="background:rgba(255,152,0,.2);">🏅</div><div><div class="aj-t">Créditos</div></div></div><span class="aj-arr">›</span></div>
         <div class="aj-row" onclick="ajAcc('cont')"><div class="aj-left"><div class="aj-ico" style="background:rgba(156,39,176,.2);">📬</div><div><div class="aj-t">Contacto</div></div></div><span class="aj-arr">›</span></div>
       </div>
@@ -600,8 +600,9 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
         <button class="aj-sb" style="width:100%;margin-top:6px;" onclick="document.getElementById('avPicker').style.display='none'">✅ Cerrar</button>
       </div>
     </div>
-    <button class="aj-logout" onclick="doLogout()">🚪 Cerrar sesión</button>
-    <div class="aj-ver">Blite Ngäbere v2.0.0 · 🌿 La voz de nuestra tierra</div>
+  <button class="aj-logout" onclick="doLogout()">🚪 Cerrar sesión</button>
+      <div class="aj-ver">Blite Ngäbere v2.0.0 · 🌿 La voz de nuestra tierra</div>
+    </div>
   </div>
 </div>
 <script>
@@ -635,7 +636,7 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
 // ═══ DATOS ═══
 const DIC=[
   {id:1,es:"Papá",ng:"Rün",img:"👨"},{id:2,es:"Mamá",ng:"Meye",img:"👩"},
-  {id:3,es:"Abuelo",ng:"Ruai",img:"👴"},{id:4,es:"Abuela",ng:"Mole",img:"👵"},
+  {id:3,es:"Abuelo",ng:"Ruai",img:"👴"},{id:4,es:"Abuela",ng:"Moloi",img:"👵"},
   {id:5,es:"Hermano",ng:"Etdaba",img:"👨‍🦰"},{id:6,es:"Hermana",ng:"Nguai",img:"👩‍🦰"},
   {id:7,es:"Hijo",ng:"Ngobo",img:"👦"},{id:8,es:"Hija",ng:"Ngönkö",img:"👧"},
   {id:9,es:"Tío",ng:"Gru",img:"🧔"},{id:10,es:"Tía",ng:"Meyi",img:"👩"},
@@ -653,7 +654,7 @@ const DIC=[
   {id:33,es:"Perro",ng:"nugro",img:"🐕"},{id:34,es:"Gato",ng:"minchi",img:"🐱"},
   {id:35,es:"Vaca",ng:"nibi",img:"🐂"},{id:36,es:"Cerdo",ng:"mutdu",img:"🐷"},
   {id:37,es:"Caballo",ng:"Mätä",img:"🐎"},{id:38,es:"Gallina",ng:"kwi",img:"🐔"},
-  {id:39,es:"Tigre",ng:"Gwära",img:"🐯"},{id:40,es:"Venado",ng:"Büra",img:"🦌"},
+  {id:39,es:"Tigre",ng:" krwüa",img:"🐯"},{id:40,es:"Venado",ng:"Büra",img:"🦌"},
   {id:41,es:"Lunes",ng:"Ñö köböi",img:"📅"},{id:42,es:"Martes",ng:"Muke köböi",img:"📅"},
   {id:43,es:"Miércoles",ng:"Kri köböi",img:"📅"},{id:44,es:"Jueves",ng:"Mede köböi",img:"📅"},
   {id:45,es:"Viernes",ng:"Ni köböi",img:"📅"},{id:46,es:"Sábado",ng:"Ngöböi",img:"📅"},
@@ -683,24 +684,7 @@ const PRONOMBRES=[
   {en:"Mutre",es:"vosotros",tipo:"Pronombres personales",ej:"We are a team!",ico:"👥"},
   {en:"Nuntre",es:"Nosotros",tipo:"Pronombres personales",ej:"We are a team!",ico:"👥"},
   //p 
-  {en:"me",es:"Me / A mí",tipo:"personal objeto",ej:"Call me, please!",ico:"👈"},
-  {en:"him",es:"Lo / A él",tipo:"personal objeto",ej:"I saw him yesterday.",ico:"👈"},
-  {en:"her",es:"La / A ella",tipo:"personal objeto",ej:"Tell her the news.",ico:"👈"},
-  {en:"us",es:"Nos / A nosotros",tipo:"personal objeto",ej:"Help us, please!",ico:"👈"},
-  {en:"them",es:"Los/Las / A ellos",tipo:"personal objeto",ej:"I know them well.",ico:"👈"},
-  {en:"my",es:"Mi / Mis",tipo:"posesivo",ej:"This is my book.",ico:"📌"},
-  {en:"your",es:"Tu / Tus / Su",tipo:"posesivo",ej:"Is this your bag?",ico:"📌"},
-  {en:"his",es:"Su (de él)",tipo:"posesivo",ej:"His name is Carlos.",ico:"📌"},
-  {en:"her",es:"Su (de ella)",tipo:"posesivo",ej:"Her smile is nice.",ico:"📌"},
-  {en:"our",es:"Nuestro/a/os/as",tipo:"posesivo",ej:"Our team won!",ico:"📌"},
-  {en:"their",es:"Su / Sus (de ellos)",tipo:"posesivo",ej:"Their house is big.",ico:"📌"},
-  {en:"this",es:"Este / Esta",tipo:"demostrativo",ej:"This is amazing!",ico:"👉"},
-  {en:"that",es:"Ese / Esa / Aquel",tipo:"demostrativo",ej:"That movie was great.",ico:"👉"},
-  {en:"these",es:"Estos / Estas",tipo:"demostrativo",ej:"These are my shoes.",ico:"👉"},
-  {en:"those",es:"Esos / Esas",tipo:"demostrativo",ej:"Those kids are fun.",ico:"👉"},
-  {en:"who",es:"Quien / Quienes",tipo:"interrogativo",ej:"Who is at the door?",ico:"❓"},
-  {en:"what",es:"Qué / Cuál",tipo:"interrogativo",ej:"What do you want?",ico:"❓"},
-  {en:"which",es:"Cuál / Cuáles",tipo:"interrogativo",ej:"Which color?",ico:"❓"}
+
 ];
 </script>
 <script>
@@ -718,38 +702,44 @@ const TEMAS={
 
 
 const ABC_DATA=[
-{l:"A",s:"como en español",e:"Abuela→Mole"},
-{l:"Ä",s:"'a' abierta",e:"Kwäkwä→Ocho"},
-{l:"B",s:"bilabial suave",e:"Büra→Venado"},
-{l:"CH",s:"sonido ch",e:"—"},
-{l:"D",s:"como en español",e:"Duo→Cabeza"},
-{l:"E",s:"como en español",e:"Etdaba→Hermano"},
-{l:"G",s:"suave",e:"Gru→Tío"},
-{l:"GW",s:"'g'+labios redondos",e:"Gwa→Pez"},
-{l:"I",s:"como en español",e:"Inson→Nariz"},
-{l:"J",s:"'a' abierta",e:"Kwäkwä→Ocho"},
-{l:"K",s:"oclusiva fuerte",e:"Kata→Boca"},
-{l:"KW",s:"'k'+labios redondos",e:"Kwati→Uno"},
-{l:"L",s:"'a' abierta",e:"Kwäkwä→Ocho"},
-{l:"M",s:"como en español",e:"Meye→Mamá"},
-{l:"N",s:"como en español",e:"Ngobo→Hijo"},
-{l:"NG",s:"nasal (tango)",e:"Ngöbö→Dios"},
-{l:"NGW",s:"ng+labios redondos",e:"—"},
-{l:"Ñ",s:"como en español",e:"Ñö köböi→Lunes"},
-{l:"O",s:"como en español",e:"Olo→Oreja"},
-{l:"Ö",s:"entre 'o' y 'e'",e:"Köntän→Ardilla"},
-{l:"R",s:"vibrante suave",e:"Rün→Papá"},
-{l:"S",s:"como en español",e:"Sübrürero→Amarillo"},
-{l:"T",s:"como en español",e:"Tain→Rojo"},
-{l:"U",s:"como en español",e:"Ukwa→Ojos"},
-{l:"Ü",s:"entre 'u' e 'i'",e:"ütdo→Paloma"},
-{l:"Y",s:"semivocal",e:"—"}
+{l:"A",s:"",e:""},
+{l:"Ä",s:"",e:""},
+{l:"B",s:"",e:""},
+{l:"CH",s:"",e:""},
+{l:"D",s:"",e:""},
+{l:"E",s:"",e:""},
+{l:"G",s:"",e:""},
+{l:"GW",s:"",e:""},
+{l:"I",s:"",e:""},
+{l:"J",s:"",e:""},
+{l:"K",s:"",e:""},
+{l:"KW",s:"",e:""},
+{l:"L",s:"",e:""},
+{l:"M",s:"",e:""},
+{l:"N",s:"",e:""},
+{l:"NG",s:"",e:""},
+{l:"NGW",s:"",e:""},
+{l:"Ñ",s:"",e:""},
+{l:"O",s:"",e:""},
+{l:"Ö",s:"",e:""},
+{l:"R",s:"",e:""},
+{l:"S",s:"",e:""},
+{l:"T",s:"",e:""},
+{l:"U",s:"",e:""},
+{l:"Ü",s:"",e:""},
+{l:"Y",s:"",e:""}
 ];
-const OR_DATA=[{ng:"Nü Meye i dre.",es:"Mi mamá cocina.",sj:"Nü (mi)",ob:"Meye (mamá)",vb:"dre (cocinar)"},{ng:"Tü nugro kwekwe.",es:"Tu perro ladra.",sj:"Tü (tu)",ob:"nugro (perro)",vb:"kwekwe (ladrar)"},{ng:"Kwe Ngöbö kwin.",es:"Dios es bueno.",sj:"Kwe (él)",ob:"Ngöbö (Dios)",vb:"kwin (ser bueno)"}];
+const OR_DATA=[{ng:"ti Meye i dre.",es:"Mi mamá cocina.",sj:"ti (mi)",ob:"Meye (mamá)",vb:"dre (cocinar)"}
+,{ng:"Tü nugro makwe.",es:"Tu perro ladra.",sj:"Tü (tu)",ob:"nugro (perro)",vb:"kwekwe (ladrar)"}
+,{ng:"Kwe Ngöbö kwin.",es:"Dios es bueno.",sj:"Kwe (él)",ob:"Ngöbö (Dios)",vb:"kwin (ser bueno)"}
+,{ng:"ti tA gribira yebAta ti ñaka noi niara ben",es:"yo estoy trabajando por eso no voy con el",sj:"Kwe (él)",ob:"Ngöbö (Dios)",vb:"kwin (ser bueno)"}
+,{ng:"Kwe Ngöbö kwin.",es:"Dios es bueno.",sj:"Kwe (él)",ob:"Ngöbö (Dios)",vb:"kwin (ser bueno)"}
+];
+
 const INFO_DATA={
-cultura:{t:"🎭 Cultura Ngäbe",x:"Los Ngäbe conservan tradiciones como el balsería, tejidos de chaquira y medicina natural. Sus molas son mundialmente reconocidas."},
+cultura:{t:"🎭 Cultura Ngäbe",x:"Los Ngäbe conservan tradiciones como la balsería, tejidos de chaquira y medicina natural. Sus naguas son mundialmente reconocidas."},
 comunidades:{t:"📍 Comunidades",x:"La comarca Ngäbe-Buglé se extiende por Bocas del Toro, Chiriquí y Veraguas en Panamá. Es la comarca indígena más grande del país."},
-curiosidades:{t:"✨ Datos curiosos",x:"El Ngäbere tiene más de 200,000 hablantes. Posee tonos distintos al español, consonantes únicas como 'td' y es la lengua indígena más hablada de Panamá."}};
+curiosidades:{t:"✨ Datos curiosos",x:"El Ngäbere tiene más de 1,000 hablantes. Posee tonos distintos al español, consonantes únicas como 'td' y es la lengua indígena más hablada de Panamá."}};
 
 const AVATARES=['🌿','🦁','🐯','🦜','🐊','⭐','🔥','🌊','🦅','🐍','🌺','🌸','🍃','🌴','🐚','🌙'];
 const CLAVES_TEMA={"👨‍👩‍👧 Familia":["Papá","Mamá","Abuelo","Abuela","Hermano","Hermana","Hijo","Hija","Tío","Tía"],"🔢 Números":["Uno","Dos","Tres","Cuatro","Seis","Siete","Ocho","Nueve","Diez"],"🎨 Colores":["Rojo","Verde","Azul","Negro","Amarillo"],"📅 Días":["Lunes","Martes","Miércoles","Jueves","Viernes","Sábado","Domingo"],"🧠 Cuerpo":["Cabeza","Ojos","Oreja","Nariz","Boca","Mano","Pie","Corazón"],"🐾 Animales":["Perro","Gato","Vaca","Cerdo","Caballo","Gallina","Tigre","Venado"],"👋 Saludos":["Bueno/Bien","Dios","Ahora","Te amo"]};
@@ -766,6 +756,7 @@ function sndFlip(){beep(440,.04,'square',.12);}
 function sndMatch(){beep(880,.05);setTimeout(()=>beep(1047,.1),65);}
 function speak(t){try{window.speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='en-US';u.rate=0.78;window.speechSynthesis.speak(u);}catch(e){}}
 function speakEs(t){try{window.speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(t);u.lang='es-ES';u.rate=0.78;window.speechSynthesis.speak(u);}catch(e){}}
+function playPron(t){const intentar=(ext,siFalla)=>{ const a=new Audio(`audio/${t}.${ext}`); a.onerror=siFalla;a.play().catch(siFalla);};intentar('mp3',()=>intentar('wav',()=>speakEs(t)));}
 
 function savePerfil(){localStorage.setItem('ng2_'+G.nombre,JSON.stringify({...G}));}
 function loadPerfil(){const d=localStorage.getItem('ng2_'+G.nombre);if(d){const p=JSON.parse(d);G.xp=p.xp||0;G.streak=p.streak||0;G.pts=p.pts||0;G.avatar=p.avatar||'🌿';}}
@@ -773,6 +764,51 @@ function savePrefs(){localStorage.setItem('ng2_prefs',JSON.stringify(prefs));}
 function loadPrefs(){const d=localStorage.getItem('ng2_prefs');if(d)Object.assign(prefs,JSON.parse(d));}
 
 function getRango(x){if(x<50)return{n:"🌱 Semilla"};if(x<150)return{n:"🌿 Brotando"};if(x<300)return{n:"🍃 Aprendiz"};if(x<500)return{n:"🌳 Conocedor"};if(x<800)return{n:"⭐ Ngäbere"};if(x<1200)return{n:"🔥 Guardián"};if(x<2000)return{n:"💎 Sabio"};return{n:"🏆 Gran Maestro"};}
+function infoXP(){
+  showInfo('⭐ ¿Cómo conseguir XP?',
+`El XP (puntos de experiencia) es tu progreso total en la pagina. Solo sube, nunca baja solo.
+
+📚 Lecciones: +10 XP por respuesta correcta (más si tienes racha)
+🃏 Memoria: +20 XP por par + 30 XP de bono al completar
+⚡ Relámpago: +10 XP por acierto (más si tienes racha)
+🔤 Construye la Palabra: +15 XP o más por palabra (sube con tu nivel)
+
+Tu XP actual: ${G.xp}`);
+}
+
+function infoRacha(){
+  showInfo('🔥 ¿Cómo funciona la racha?',
+`La racha cuenta tus aciertos seguidos en las Lecciones.
+
+✅ Cada respuesta correcta: +1 a tu racha
+❌ Una respuesta incorrecta: la racha vuelve a 0
+
+Mientras más alta esté tu racha, más XP ganas por cada acierto (el bono se suma al XP base).
+
+¡Sigue respondiendo bien para no perderla!
+
+Tu racha actual: ${G.streak}`);
+}
+
+function infoRango(){
+  const sig=[{m:50,n:'🌿 Brotando'},{m:150,n:'🍃 Aprendiz'},{m:300,n:'🌳 Conocedor'},{m:500,n:'⭐ Ngäbere'},{m:800,n:'🔥 Guardián'},{m:1200,n:'💎 Sabio'},{m:2000,n:'🏆 Gran Maestro'}];
+  const prox=sig.find(s=>G.xp<s.m);
+  const faltan=prox?(prox.m-G.xp):0;
+  showInfo('🏆 ¿Cómo subo de rango?',
+`Tu rango depende únicamente de tu XP total. Sube solo, sin acciones extra.
+
+🌱 Semilla: 0-49 XP
+🌿 Brotando: 50-149 XP
+🍃 Aprendiz: 150-299 XP
+🌳 Conocedor: 300-499 XP
+⭐ Ngäbere: 500-799 XP
+🔥 Guardián: 800-1199 XP
+💎 Sabio: 1200-1999 XP
+🏆 Gran Maestro: 2000+ XP
+
+Tu rango actual: ${getRango(G.xp).n}
+${prox?`Te faltan ${faltan} XP para llegar a ${prox.n}`:'¡Ya tienes el rango máximo!'}`);
+}
 function shuf(a){const b=[...a];for(let i=b.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[b[i],b[j]]=[b[j],b[i]];}return b;}
 function upUI(){const el=n=>document.getElementById(n);el('menuNombre').textContent=G.nombre;el('menuAv').textContent=G.avatar||'🌿';const etq={niño:'🧒 Niño/a',adolescente:'🎓 Adolescente',adulto:'💼 Adulto',otro:'🍃 Sabio/a'};el('menuBadge').textContent=(etq[G.grupo]||'👤')+' · '+G.edad+' años';el('sXP').textContent=G.xp;el('sStreak').textContent=G.streak;const r=getRango(G.xp);el('sRango').textContent=r.n;el('xpMini').style.width=(G.xp%100)+'%';if(el('qXP'))el('qXP').textContent=G.xp;if(el('qStreak'))el('qStreak').textContent=G.streak;if(el('qBar'))el('qBar').style.width=(G.xp%100)+'%';}
 
@@ -868,25 +904,87 @@ function startMemoria(){document.getElementById('jSel').style.display='none';doc
 function flipMem(d){if(mLock||d.classList.contains('match')||mSel.includes(d))return;sndFlip();d.classList.add('flip');mSel.push(d);if(mSel.length===2){mLock=true;const[a,b]=mSel;const ok=a.dataset.id===b.dataset.id&&a.dataset.tipo!==b.dataset.tipo;setTimeout(()=>{if(ok){a.classList.add('match');b.classList.add('match');mPairs++;mPts+=20;document.getElementById('mPares').textContent=mPairs;document.getElementById('mPts').textContent=mPts;sndMatch();speakEs(a.dataset.tipo==='ng'?a.textContent:b.textContent);if(mPairs===mTotal){const bx=30;G.xp+=mPts+bx;G.streak++;document.getElementById('mMsg').textContent=`🎉 ¡Completado! +${mPts+bx} XP`;upUI();savePerfil();sndWin();}}else{a.classList.add('bad');b.classList.add('bad');sndErr();setTimeout(()=>{a.classList.remove('flip','bad');b.classList.remove('flip','bad');},500);}mSel=[];mLock=false;},650);}}
 
 let relTmr=null,relSeg=7,relPts=0,relVid=3,relRach=0,relOn=false;
-function startRelampago(){document.getElementById('jSel').style.display='none';document.getElementById('jRel').style.display='block';relPts=0;relVid=3;relRach=0;relOn=true;document.getElementById('rMsg').textContent='';if(relTmr)clearInterval(relTmr);relNueva();}
-function relNueva(){if(!relOn||relVid<=0)return;clearInterval(relTmr);relSeg=7;document.getElementById('rTimer').style.width='100%';document.getElementById('rMsg').textContent='';const pool=shuf(DIC).slice(0,4);const cor=pool[0];const esNG=Math.random()>.5;document.getElementById('rPregunta').textContent=esNG?`¿Qué significa "${cor.ng}"?`:`¿Cómo se dice "${cor.es}" en Ngäbere?`;const opts=shuf(pool);const cont=document.getElementById('rOpts');cont.innerHTML='';opts.forEach(op=>{const b=document.createElement('div');b.className='rel-opt';b.textContent=esNG?op.es:op.ng;b.onclick=()=>{if(!relOn)return;clearInterval(relTmr);const ok=esNG?(op.es===cor.es):(op.ng===cor.ng);if(ok){b.classList.add('ok');relPts+=10+relRach;relRach++;document.getElementById('rMsg').textContent=`✅ +${10+relRach-1} pts`;G.xp+=(10+relRach);upUI();savePerfil();sndOk();speakEs(cor.ng);}else{b.classList.add('err');relVid--;relRach=0;document.getElementById('rMsg').textContent=`❌ Era: ${esNG?cor.es:cor.ng}`;sndErr();cont.querySelectorAll('.rel-opt').forEach(x=>{if(esNG?x.textContent===cor.es:x.textContent===cor.ng)x.classList.add('ok');});}document.getElementById('rPts').textContent=relPts;document.getElementById('rVidas').textContent=relVid;document.getElementById('rRacha').textContent=relRach;cont.querySelectorAll('.rel-opt').forEach(x=>x.style.pointerEvents='none');if(relVid<=0){relOn=false;document.getElementById('rMsg').textContent=`💀 Game Over! ${relPts} pts`;G.xp+=relPts;upUI();savePerfil();sndWin();}else setTimeout(relNueva,1100);};cont.appendChild(b);});relTmr=setInterval(()=>{relSeg-=.1;document.getElementById('rTimer').style.width=Math.max(0,relSeg/7*100)+'%';if(relSeg<=0){clearInterval(relTmr);if(!relOn)return;relVid--;relRach=0;document.getElementById('rVidas').textContent=relVid;document.getElementById('rMsg').textContent=`⏰ ¡Tiempo! Era: ${esNG?cor.es:cor.ng}`;sndErr();cont.querySelectorAll('.rel-opt').forEach(x=>x.style.pointerEvents='none');if(relVid<=0){relOn=false;document.getElementById('rMsg').textContent=`💀 Game Over! ${relPts} pts`;G.xp+=relPts;upUI();savePerfil();sndWin();}else setTimeout(relNueva,1100);}},100);}
+function startRelampago(){document.getElementById('jSel').style.display='none';
+document.getElementById('jRel').style.display='block';relPts=0;relVid=3;relRach=0;relOn=true;
+document.getElementById('rMsg').textContent='';
+if(relTmr)clearInterval(relTmr);relNueva();}
+function relNueva(){if(!relOn||relVid<=0)return;clearInterval(relTmr);relSeg=7;
+document.getElementById('rTimer').style.width='100%';
+document.getElementById('rMsg').textContent='';const pool=shuf(DIC).slice(0,4);const cor=pool[0];const esNG=Math.random()>.5;
+document.getElementById('rPregunta').textContent=esNG?`¿Qué significa "${cor.ng}"?`:`¿Cómo se dice "${cor.es}" en Ngäbere?`;const opts=shuf(pool);
+const cont=document.getElementById('rOpts');
+cont.innerHTML='';
+opts.forEach(op=>{const b=document.createElement('div');b.className='rel-opt';b.textContent=esNG?op.es:op.ng;b.onclick=()=>{if(!relOn)return;clearInterval(relTmr);const ok=esNG?(op.es===cor.es):(op.ng===cor.ng);if(ok){b.classList.add('ok');relPts+=10+relRach;relRach++;
+document.getElementById('rMsg').textContent=`✅ +${10+relRach-1} pts`;G.xp+=(10+relRach);upUI();savePerfil();sndOk();speakEs(cor.ng);}else{b.classList.add('err');relVid--;relRach=0;
+document.getElementById('rMsg').textContent=`❌ Era: ${esNG?cor.es:cor.ng}`;sndErr();cont.querySelectorAll('.rel-opt').forEach(x=>{if(esNG?x.textContent===cor.es:x.textContent===cor.ng)x.classList.add('ok');});}
+document.getElementById('rPts').textContent=relPts;
+document.getElementById('rVidas').textContent=relVid;document.getElementById('rRacha').textContent=relRach;cont.querySelectorAll('.rel-opt').forEach(x=>x.style.pointerEvents='none');if(relVid<=0){relOn=false;
+document.getElementById('rMsg').textContent=`💀 Game Over! ${relPts} pts`;G.xp+=relPts;upUI();savePerfil();sndWin();}else setTimeout(relNueva,1100);};cont.appendChild(b);});relTmr=setInterval(()=>{relSeg-=.1;
+document.getElementById('rTimer').style.width=Math.max(0,relSeg/7*100)+'%';if(relSeg<=0){clearInterval(relTmr);if(!relOn)return;relVid--;relRach=0;
+document.getElementById('rVidas').textContent=relVid;document.getElementById('rMsg').textContent=`⏰ ¡Tiempo! Era: ${esNG?cor.es:cor.ng}`;sndErr();cont.querySelectorAll('.rel-opt').forEach(x=>x.style.pointerEvents='none');if(relVid<=0){relOn=false;
+document.getElementById('rMsg').textContent=`💀 Game Over! ${relPts} pts`;G.xp+=relPts;upUI();savePerfil();sndWin();}else setTimeout(relNueva,1100);}},100);}
 
 let cPts=0,cNivG=1,cPal=null;
-function startConstruye(){document.getElementById('jSel').style.display='none';document.getElementById('jCon').style.display='block';cPts=0;cNivG=1;document.getElementById('cPts').textContent=0;document.getElementById('cNiv').textContent=1;document.getElementById('cVerBtn').onclick=cVerif;cNueva();}
-function cNueva(){const pool=DIC.filter(p=>p.ng.length>=3&&p.ng.length<=10&&!p.ng.includes(' '));cPal=pool[Math.floor(Math.random()*pool.length)];document.getElementById('cEsp').textContent=cPal.es+' '+cPal.img;document.getElementById('cHint').textContent='';document.getElementById('cMsg').textContent='';document.getElementById('cResp').innerHTML='';const letsOk=cPal.ng.toLowerCase().split('');const extras='aeiounmrts'.split('').filter(l=>!letsOk.includes(l)).slice(0,3);const all=shuf([...letsOk,...extras]);const cont=document.getElementById('cLetras');cont.innerHTML='';all.forEach((l,i)=>{const b=document.createElement('button');b.className='l-btn';b.textContent=l.toUpperCase();b.dataset.i=i;b.onclick=()=>{if(b.classList.contains('used'))return;b.classList.add('used');beep(500,.04,'square',.18);const s=document.createElement('div');s.className='l-slot';s.textContent=l.toUpperCase();s.onclick=()=>{b.classList.remove('used');s.remove();};document.getElementById('cResp').appendChild(s);};cont.appendChild(b);});}
-function cVerif(){const slots=document.querySelectorAll('#cResp .l-slot');const resp=Array.from(slots).map(s=>s.textContent.toLowerCase()).join('');const ok=resp===cPal.ng.toLowerCase().replace(/\s/g,'');if(ok){const pts=15+cNivG*5;cPts+=pts;cNivG++;G.xp+=pts;upUI();savePerfil();document.getElementById('cMsg').innerHTML=`✅ ¡Correcto! <strong>${cPal.ng}</strong> +${pts} XP`;document.getElementById('cMsg').style.color='#81c784';document.getElementById('cPts').textContent=cPts;document.getElementById('cNiv').textContent=cNivG;sndOk();speakEs(cPal.ng);setTimeout(cNueva,1700);}else{G.streak=0;document.getElementById('cMsg').innerHTML=`❌ Era: <strong>${cPal.ng}</strong>`;document.getElementById('cMsg').style.color='#ef9a9a';sndErr();setTimeout(()=>{document.getElementById('cMsg').textContent='';document.getElementById('cResp').innerHTML='';document.querySelectorAll('#cLetras .l-btn').forEach(b=>b.classList.remove('used'));},1400);}}
+
+function startConstruye(){document.getElementById('jSel').style.display='none';
+document.getElementById('jCon').style.display='block';cPts=0;cNivG=1;
+document.getElementById('cPts').textContent=0;document.getElementById('cNiv').textContent=1;
+document.getElementById('cVerBtn').onclick=cVerif;cNueva();}
+function cNueva(){const pool=DIC.filter(p=>p.ng.length>=3&&p.ng.length<=10&&!p.ng.includes(' '));cPal=pool[Math.floor(Math.random()*pool.length)];
+document.getElementById('cEsp').textContent=cPal.es+' '+cPal.img;
+document.getElementById('cHint').textContent='';
+document.getElementById('cMsg').textContent='';
+document.getElementById('cResp').innerHTML='';const letsOk=cPal.ng.toLowerCase().split('');const extras='aeiounmrts'.split('').filter(l=>!letsOk.includes(l)).slice(0,3);const all=shuf([...letsOk,...extras]);
+const cont=document.getElementById('cLetras');cont.innerHTML='';all.forEach((l,i)=>{const b=document.createElement('button');b.className='l-btn';b.textContent=l.toUpperCase();b.dataset.i=i;b.onclick=()=>{if(b.classList.contains('used'))return;b.classList.add('used');beep(500,.04,'square',.18);
+const s=document.createElement('div');s.className='l-slot';s.textContent=l.toUpperCase();s.onclick=()=>{b.classList.remove('used');s.remove();};
+document.getElementById('cResp').appendChild(s);};cont.appendChild(b);});}
+function cVerif(){const slots=document.querySelectorAll('#cResp .l-slot');const resp=Array.from(slots).map(s=>s.textContent.toLowerCase()).join('');const ok=resp===cPal.ng.toLowerCase().replace(/\s/g,'');if(ok){const pts=15+cNivG*5;cPts+=pts;cNivG++;G.xp+=pts;upUI();savePerfil();
+document.getElementById('cMsg').innerHTML=`✅ ¡Correcto! <strong>${cPal.ng}</strong> +${pts} XP`;
+document.getElementById('cMsg').style.color='#81c784';
+document.getElementById('cPts').textContent=cPts;
+document.getElementById('cNiv').textContent=cNivG;sndOk();speakEs(cPal.ng);setTimeout(cNueva,1700);}else{G.streak=0;
+document.getElementById('cMsg').innerHTML=`❌ Era: <strong>${cPal.ng}</strong>`;
+document.getElementById('cMsg').style.color='#ef9a9a';sndErr();
+setTimeout(()=>{document.getElementById('cMsg').textContent='';
+document.getElementById('cResp').innerHTML='';
+document.querySelectorAll('#cLetras .l-btn').forEach(b=>b.classList.remove('used'));},1400);}}
 
 // ─── DICCIONARIO ───
 function mostrarDict(){hideAll();const p=document.getElementById('dictPage');p.style.display='block';p.classList.add('on');renderDict('');}
-function renderDict(q){const lista=DIC.filter(p=>p.es.toLowerCase().includes(q.toLowerCase())||p.ng.toLowerCase().includes(q.toLowerCase()));const cont=document.getElementById('dictLista');cont.innerHTML='';lista.forEach(p=>{const d=document.createElement('div');d.className='d-item';d.innerHTML=`<div class="d-img">${p.img}</div><div style="flex:1"><div class="d-es">${p.es}</div><div class="d-ng">${p.ng}</div></div><button class="snd-btn" onclick="event.stopPropagation();speakEs('${p.ng}')">🔊</button>`;if(prefs.pron)d.onmouseenter=()=>speakEs(p.ng);cont.appendChild(d);});}
+function renderDict(q){const lista=DIC.filter(p=>p.es.toLowerCase().includes(q.toLowerCase())||p.ng.toLowerCase().includes(q.toLowerCase()));const cont=document.getElementById('dictLista');
+cont.innerHTML='';lista.forEach(p=>{const d=document.createElement('div');d.className='d-item';d.innerHTML=`<div class="d-img">${p.img}</div><div style="flex:1"><div class="d-es">${p.es}</div><div class="d-ng">${p.ng}</div></div><button class="snd-btn" onclick="event.stopPropagation();playPronId(${p.id},'${p.ng.replace(/'/g,"\\'")}')">🔊</button>`;if(prefs.pron)d.onmouseenter=()=>playPronId(p.id,p.ng);cont.appendChild(d);});}
+function playPronId(id,texto){
+  const intentar=(ext,siFalla)=>{
+    const a=new Audio(`audio/${id}.${ext}`);
+    a.onerror=siFalla;
+    a.play().catch(siFalla);
+  };
+  intentar('mp3',()=>intentar('ogg',()=>intentar('wav',()=>speakEs(texto))));
+}
 document.getElementById('busca').addEventListener('input',function(){renderDict(this.value);});
-document.getElementById('inpTrad').addEventListener('input',function(){const t=this.value.trim().toLowerCase();const res=document.getElementById('resTrad');if(!t){res.style.display='none';return;}const eE=DIC.find(p=>p.es.toLowerCase().includes(t));const eN=DIC.find(p=>p.ng.toLowerCase().includes(t));res.style.display='block';if(eE)res.innerHTML=`${eE.img} <span style="color:#81c784">${eE.es}</span> → <span style="color:#ffb74d">${eE.ng}</span> <button class="snd-btn" onclick="speakEs('${eE.ng}')">🔊</button>`;else if(eN)res.innerHTML=`${eN.img} <span style="color:#ffb74d">${eN.ng}</span> → <span style="color:#81c784">${eN.es}</span>`;else{res.innerHTML='❌ No encontrado';res.style.color='#ef9a9a';}});
+document.getElementById('inpTrad').addEventListener('input',function(){const t=this.value.trim().toLowerCase();const res=document.getElementById('resTrad');if(!t){res.style.display='none';return;}const eE=DIC.find(p=>p.es.toLowerCase().includes(t));const eN=DIC.find(p=>p.ng.toLowerCase().includes(t));res.style.display='block';if(eE)res.innerHTML=`${eE.img} <span style="color:#81c784">${eE.es}</span> → <span style="color:#ffb74d">${eE.ng}</span> <button class="snd-btn" onclick="playPron('${eE.ng}')">🔊</button>`;else if(eN)res.innerHTML=`${eN.img} <span style="color:#ffb74d">${eN.ng}</span> → <span style="color:#81c784">${eN.es}</span>`;else{res.innerHTML='❌ No encontrado';res.style.color='#ef9a9a';}});
 document.getElementById('btnVDict').onclick=()=>showMenu();
+function slug(t){
+  return t.toLowerCase()
+    .normalize('NFD').replace(/[\u0300-\u036f]/g,'') // quita acentos normales (á,é...)
+    .replace(/ä/g,'a').replace(/ö/g,'o').replace(/ü/g,'u') // letras ngäbere especiales
+    .replace(/[^a-z0-9]+/g,'_') // espacios/puntos/comas -> _
+    .replace(/^_+|_+$/g,''); // sin _ al inicio/final
+}
+function playPron(t){ 
+  const s=slug(t);
+  const intentar=(ext,siFalla)=>{
+  const a=new Audio(`audio/${s}.${ext}`);
+    a.onerror=siFalla;
+    a.play().catch(siFalla);
+  };
+  intentar('mp3',()=>intentar('ogg',()=>intentar('wav',()=>speakEs(t))));
+}
 
-function mostrarAbc(){hideAll();const p=document.getElementById('abcPage');p.style.display='block';p.classList.add('on');const grid=document.getElementById('abcGrid');grid.innerHTML='';ABC_DATA.forEach(item=>{const c=document.createElement('div');c.className='l-card';c.innerHTML=`<span class="l-big">${item.l}</span><span class="l-son">${item.s}</span><span class="l-ej">${item.e}</span>`;c.onclick=()=>{beep(660,.05);speakEs(item.l);};grid.appendChild(c);});}
+function mostrarAbc(){hideAll();const p=document.getElementById('abcPage');p.style.display='block';p.classList.add('on');const grid=document.getElementById('abcGrid');grid.innerHTML='';ABC_DATA.forEach(item=>{const c=document.createElement('div');c.className='l-card';c.innerHTML=`<span class="l-big">${item.l}</span><span class="l-son">${item.s}</span><span class="l-ej">${item.e}</span>`;c.onclick=()=>{beep(660,.05);playPron(item.l);};grid.appendChild(c);});}
 document.getElementById('btnVAbc').onclick=()=>showMenu();
 
-function mostrarOr(){hideAll();const p=document.getElementById('orPage');p.style.display='block';p.classList.add('on');const lista=document.getElementById('orLista');lista.innerHTML='';OR_DATA.forEach(o=>{const d=document.createElement('div');d.className='or-card';d.innerHTML=`<div class="or-ng">${o.ng}</div><div class="or-es">${o.es}</div><div style="display:flex;gap:5px;flex-wrap:wrap;margin-top:4px;"><span class="tag tag-v">👤 ${o.sj}</span><span class="tag tag-r">📦 ${o.ob}</span><span class="tag tag-m">⚡ ${o.vb}</span></div>`;d.onclick=()=>speakEs(o.ng);lista.appendChild(d);});}
+function mostrarOr(){hideAll();const p=document.getElementById('orPage');p.style.display='block';p.classList.add('on');const lista=document.getElementById('orLista');lista.innerHTML='';OR_DATA.forEach(o=>{const d=document.createElement('div');d.className='or-card';d.innerHTML=`<div class="or-ng">${o.ng}</div><div class="or-es">${o.es}</div><div style="display:flex;gap:5px;flex-wrap:wrap;margin-top:4px;"><span class="tag tag-v">👤 ${o.sj}</span><span class="tag tag-r">📦 ${o.ob}</span><span class="tag tag-m">⚡ ${o.vb}</span></div>`;d.onclick=()=>playPron(o.ng);lista.appendChild(d);});}
 document.getElementById('btnVOr').onclick=()=>showMenu();
 
 function showInfo(t,x){document.getElementById('infoTit').textContent=t;document.getElementById('infoTxt').textContent=x;document.getElementById('infoMod').classList.add('show');}
@@ -912,7 +1010,27 @@ function mostrarAvPicker(){const grid=document.getElementById('avGrid');grid.inn
 document.querySelectorAll('#modalLocal input').forEach(input=>{input.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();document.getElementById('btnLocalOk').click();}});});
 document.querySelectorAll('#guestForm input').forEach(input=>{input.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();document.getElementById('btnGuestOk').click();}});});
 document.querySelectorAll('#modalReg input').forEach(input=>{input.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();document.getElementById('btnRegOk').click();}});});
-function ajAcc(a){switch(a){case 'nombre':{const n=prompt('Nuevo nombre:',G.nombre);if(n&&n.trim()){G.nombre=n.trim();showMenu();savePerfil();document.getElementById('ajNDesc').textContent=G.nombre;}break;}case 'avatar':mostrarAvPicker();break;case 'email':{const e=prompt('Nuevo email:');if(e&&e.includes('@')){if(window._fbEmail)window._fbEmail(e);else alert('Requiere sesión Firebase.');}break;}case 'pass':{const p=prompt('Nueva contraseña (mín. 6):');if(p&&p.length>=6){if(window._fbPass)window._fbPass(p);else alert('Requiere sesión Firebase.');}else if(p)alert('Mínimo 6 caracteres.');break;}case 'eliminar':{if(confirm('⚠️ ¿Eliminar cuenta?')){localStorage.clear();cerrarAj();showCover();}break;}case 'rxp':{if(confirm('¿Reiniciar XP?')){G.xp=0;upUI();savePerfil();alert('⭐ XP reiniciado.');}break;}case 'rracha':{if(confirm('¿Reiniciar racha?')){G.streak=0;upUI();savePerfil();alert('🔥 Racha reiniciada.');}break;}case 'rtodo':{if(confirm('⚠️ ¿Reiniciar todo?')){G.xp=0;G.streak=0;G.pts=0;upUI();savePerfil();alert('🔄 Reiniciado.');}break;}case 'prog':{showInfo('📊 Mi Progreso',`👤 ${G.nombre}  |  ${G.edad} años\n⭐ XP: ${G.xp}\n🔥 Racha: ${G.streak}\n🏆 Rango: ${getRango(G.xp).n}\n🎯 Pts juegos: ${G.pts}`);cerrarAj();break;}case 'cloud':alert('✅ El progreso se guarda automáticamente con Firebase.');break;case 'info':{showInfo('🌿 Blite Ngäbere','App para aprender el idioma Ngäbere del pueblo Ngäbe-Buglé de Panamá.');cerrarAj();break;}case 'cred':{showInfo('🏅 Créditos','Desarrollado con ❤️ para preservar el idioma Ngäbere.\nContenido revisado por hablantes nativos de la comarca Ngäbe-Buglé, Panamá.');cerrarAj();break;}case 'cont':{showInfo('📬 Contacto','📧 blitengabere@gmail.com\n🌿 Comarca Ngäbe-Buglé, Panamá');cerrarAj();break;}}}
+function ajAcc(a){switch(a){case 'nombre':{const n=prompt('Nuevo nombre:',G.nombre);
+if(n&&n.trim()){G.nombre=n.trim();showMenu();savePerfil();
+document.getElementById('ajNDesc').textContent=G.nombre;}break;}
+case 'avatar':mostrarAvPicker();break;
+case 'email':{const e=prompt('Nuevo email:');if(e&&e.includes('@')){if(window._fbEmail)window._fbEmail(e);
+else alert('Requiere sesión Firebase.');}break;}
+case 'pass':{const p=prompt('Nueva contraseña (mín. 6):');
+if(p&&p.length>=6){if(window._fbPass)window._fbPass(p);
+else alert('Requiere sesión Firebase.');}else if(p)alert('Mínimo 6 caracteres.');break;}
+case 'eliminar':{if(confirm('⚠️ ¿Eliminar cuenta?')){localStorage.clear();cerrarAj();showCover();}break;}
+case 'rxp':{if(confirm('¿Reiniciar XP?')){G.xp=0;upUI();
+savePerfil();alert('⭐ XP reiniciado.');}break;}
+case 'rracha':{if(confirm('¿Reiniciar racha?')){G.streak=0;upUI();
+savePerfil();alert('🔥 Racha reiniciada.');}break;}
+case 'rtodo':{if(confirm('⚠️ ¿Reiniciar todo?')){G.xp=0;G.streak=0;G.pts=0;upUI();
+savePerfil();alert('🔄 Reiniciado.');}break;}
+case 'prog':{showInfo('Mi Progreso',`👤 ${G.nombre}  |  ${G.edad} años\n⭐ XP: ${G.xp}\n🔥 Racha: ${G.streak}\n🏆 Rango: ${getRango(G.xp).n}\n🎯 Pts juegos: ${G.pts}`);cerrarAj();break;}
+case 'cloud':alert('✅ El progreso se guarda automáticamente con Firebase.');break;
+case 'info':{showInfo('🌿 Blite Ngäbere','App para aprender el idioma Ngäbere del pueblo Ngäbe-Buglé de Panamá.');cerrarAj();break;}
+case 'cred':{showInfo('🏅 Créditos','Desarrollado con ❤️ para preservar el idioma Ngäbere.\nContenido revisado por hablantes nativos de la comarca Ngäbe-Buglé, Panamá.');cerrarAj();break;}
+case 'cont':{showInfo('📬 Contacto','hjhj\n🌿 Comarca Ngäbe-Buglé, Panamá');cerrarAj();break;}}}
 
 loadPrefs();showCover();
 document.getElementById('btnLogin').addEventListener('click',function(e){const email=document.getElementById('inpEmail').value.trim();const pass=document.getElementById('inpPass').value.trim();if(!email&&!pass){e.stopImmediatePropagation();document.getElementById('modalLocal').classList.add('show');}},true);
