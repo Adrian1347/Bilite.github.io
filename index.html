@@ -448,15 +448,7 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
       <p style="color:#a5d6a7;font-size:12px;text-align:center;margin-bottom:14px;">Letras especiales: <strong style="color:#ffb74d;">ä, ö, ü</strong> · Toca cada letra para escucharla</p>
       <div id="abcGrid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px;"></div>
       <div style="background:rgba(46,125,50,.15);border-radius:18px;padding:12px;margin-top:14px;border:1px solid rgba(76,175,80,.3);">
-        <p style="color:#ffb74d;font-weight:bold;font-size:12px;margin-bottom:7px;">Pronunciación</p>
-        <ul style="color:#c8e6c9;font-size:11px;line-height:2;padding-left:14px;">
-          <li><strong style="color:#81c784;">ä</strong> — "a" abierta y corta</li>
-          <li><strong style="color:#81c784;">ö</strong> — entre "o" y "e"</li>
-          <li><strong style="color:#81c784;">ü</strong> — entre "u" e "i"</li>
-          <li><strong style="color:#81c784;">ng</strong> — nasal, como en "tango"</li>
-          <li><strong style="color:#81c784;">gw / kw</strong> — con labios redondeados</li>
-          <li><strong style="color:#81c784;">td</strong> — consonante doble única</li>
-        </ul>
+    
       </div>
       <div style="margin-top:14px;"><button class="btn btn-cafe" id="btnVAbc" style="width:100%;">← Volver</button></div>
     </div>
@@ -502,7 +494,7 @@ body::before{content:'';position:fixed;top:0;left:0;width:100%;height:100%;backg
         <div class="con-sub-card" onclick="mostrarConectores('pronombres')">
           <div style="font-size:2rem;margin-bottom:6px;"></div>
           <h3>Pronombres</h3>
-          <p>6 pronombres</p>
+          <p>6 ~pronombres</p>
         </div>
       </div>
       <div id="conContenido"></div>
@@ -677,12 +669,12 @@ const VERBOS=[
 ];
 const PRONOMBRES=[
   //pronombres personales
-  {en:"Ti",es:"Yo",tipo:"Pronombres personales",ej:"Ti sribi",eje:"yo trabajo",ico:"👤"},
-  {en:"MÄ",es:"Tú / Usted",tipo:"Pronombres personales",ej:"You are my friend.",ico:"👤"},
-  {en:"Niara",es:"Él/Ella",tipo:"Pronombres personales",ej:"He is my brother.",ico:"👤"},
-  {en:"Niaratre",es:"Ellos (cosas/animales)",tipo:"Pronombres personales",ej:"It is raining.",ico:"🌧️"},
-  {en:"Mutre",es:"vosotros",tipo:"Pronombres personales",ej:"We are a team!",ico:"👥"},
-  {en:"Nuntre",es:"Nosotros",tipo:"Pronombres personales",ej:"We are a team!",ico:"👥"},
+  {en:"Ti",es:"Yo",tipo:"Pronombres personales",ej:"",eje:"",ico:""},
+  {en:"MÄ",es:"Tú / Usted",tipo:"Pronombres personales",ej:"",ico:""},
+  {en:"Niara",es:"Él/Ella",tipo:"Pronombres personales",ej:"",ico:""},
+  {en:"Niaratre",es:"Ellos (cosas/animales)",tipo:"Pronombres personales",ej:"",ico:""},
+  {en:"Mutre",es:"vosotros",tipo:"Pronombres personales",ej:"",ico:""},
+  {en:"Nuntre",es:"Nosotros",tipo:"Pronombres personales",ej:"",ico:""},
   //p 
 
 ];
@@ -732,14 +724,12 @@ const ABC_DATA=[
 const OR_DATA=[{ng:"ti Meye i dre.",es:"Mi mamá cocina.",sj:"ti (mi)",ob:"Meye (mamá)",vb:"dre (cocinar)"}
 ,{ng:"Tü nugro makwe.",es:"Tu perro ladra.",sj:"Tü (tu)",ob:"nugro (perro)",vb:"kwekwe (ladrar)"}
 ,{ng:"Kwe Ngöbö kwin.",es:"Dios es bueno.",sj:"Kwe (él)",ob:"Ngöbö (Dios)",vb:"kwin (ser bueno)"}
-,{ng:"ti tA gribira yebAta ti ñaka noi niara ben",es:"yo estoy trabajando por eso no voy con el",sj:"Kwe (él)",ob:"Ngöbö (Dios)",vb:"kwin (ser bueno)"}
-,{ng:"Kwe Ngöbö kwin.",es:"Dios es bueno.",sj:"Kwe (él)",ob:"Ngöbö (Dios)",vb:"kwin (ser bueno)"}
 ];
 
 const INFO_DATA={
 cultura:{t:"🎭 Cultura Ngäbe",x:"Los Ngäbe conservan tradiciones como la balsería, tejidos de chaquira y medicina natural. Sus naguas son mundialmente reconocidas."},
 comunidades:{t:"📍 Comunidades",x:"La comarca Ngäbe-Buglé se extiende por Bocas del Toro, Chiriquí y Veraguas en Panamá. Es la comarca indígena más grande del país."},
-curiosidades:{t:"✨ Datos curiosos",x:"El Ngäbere tiene más de 1,000 hablantes. Posee tonos distintos al español, consonantes únicas como 'td' y es la lengua indígena más hablada de Panamá."}};
+curiosidades:{t:"✨ Datos curiosos",x:"El Ngäbere tiene más de 150,000 hablantes. Posee tonos distintos al español, consonantes únicas como 'td' y es la lengua indígena más hablada de Panamá."}};
 
 const AVATARES=['🌿','🦁','🐯','🦜','🐊','⭐','🔥','🌊','🦅','🐍','🌺','🌸','🍃','🌴','🐚','🌙'];
 const CLAVES_TEMA={"👨‍👩‍👧 Familia":["Papá","Mamá","Abuelo","Abuela","Hermano","Hermana","Hijo","Hija","Tío","Tía"],"🔢 Números":["Uno","Dos","Tres","Cuatro","Seis","Siete","Ocho","Nueve","Diez"],"🎨 Colores":["Rojo","Verde","Azul","Negro","Amarillo"],"📅 Días":["Lunes","Martes","Miércoles","Jueves","Viernes","Sábado","Domingo"],"🧠 Cuerpo":["Cabeza","Ojos","Oreja","Nariz","Boca","Mano","Pie","Corazón"],"🐾 Animales":["Perro","Gato","Vaca","Cerdo","Caballo","Gallina","Tigre","Venado"],"👋 Saludos":["Bueno/Bien","Dios","Ahora","Te amo"]};
